@@ -1,8 +1,9 @@
 ---
-// Vykresluje odkaz na nástroj z centrálního affiliate registru
-// (src/data/affiliate-links.ts). Dokud pro nástroj neexistuje aktivní
-// partnerský odkaz, automaticky použije neafiliovaný fallbackUrl – obsah
-// tak jde psát bez čekání na uzavřené partnerství.
+// Vykresluje odkaz na nástroj z centrálního registru
+// (src/data/affiliate-links.ts). Dokud nemá nástroj `affiliateStatus:
+// 'active'` s vyplněným affiliateUrl, odkaz vždy vede na `officialUrl`
+// bez jakéhokoliv disclosure textu – obsah tak jde psát dřív, než je
+// partnerství uzavřené, a nikdy se nezobrazí smyšlený tracking odkaz.
 import { getAffiliateTool } from '../data/affiliate-links';
 import { ui } from '../i18n/cs';
 
@@ -14,20 +15,32 @@ interface Props {
 
 const { toolId, note, class: className = '' } = Astro.props;
 const tool = getAffiliateTool(toolId);
+const isLive = Boolean(tool && tool.affiliateStatus === 'active' && tool.affiliateUrl);
+const href = tool ? (isLive ? tool.affiliateUrl! : tool.officialUrl) : undefined;
+const disclosure = !tool
+  ? null
+  : !isLive
+    ? null
+    : tool.affiliateType === 'referral'
+      ? ui.method.referralNote
+      : tool.affiliateType === 'affiliate'
+        ? ui.method.affiliateNote
+        : null;
 ---
 
 {tool && (
   <a
-    href={tool.affiliateUrl ?? tool.fallbackUrl}
+    href={href}
     target="_blank"
-    rel={tool.affiliateUrl ? 'sponsored nofollow noopener' : 'noopener'}
+    rel={isLive ? 'sponsored nofollow noopener' : 'noopener'}
     class={`group flex items-start justify-between gap-3 rounded-xl border border-border bg-card p-4 transition hover:border-accent-dark ${className}`}
   >
     <span>
-      <span class="flex items-center gap-2 font-semibold">
+      <span class="flex flex-wrap items-center gap-2 font-semibold">
         {tool.name}
-        {tool.affiliateUrl && (
-          <span class="text-xs font-normal text-muted">({ui.method.affiliateNote})</span>
+        {disclosure && <span class="text-xs font-normal text-muted">({disclosure})</span>}
+        {tool.freePlan && (
+          <span class="rounded-full bg-bg px-2 py-0.5 text-xs font-normal text-accent-dark">má bezplatnou variantu</span>
         )}
       </span>
       <span class="mt-1 block text-sm text-muted">{note ?? tool.description}</span>

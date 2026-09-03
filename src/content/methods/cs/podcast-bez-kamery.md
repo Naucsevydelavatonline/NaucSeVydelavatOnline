@@ -25,7 +25,16 @@ firstClientTip: >
   Publikuj pravidelně minimálně 8-10 epizod, než se poohlížíš po
   sponzorech – ti chtějí vidět konzistenci a nějaké posluchače, ne slib
   do budoucna.
-tools: []
+tools:
+  - toolId: descript
+    note: Střih podcastu úpravou textového přepisu – rychlejší než klasický zvukový editor.
+    role: core
+  - toolId: elevenlabs
+    note: AI hlas pro intro/outro nebo epizody bez hosta.
+    role: alternative
+  - toolId: castmagic
+    note: Automatický přepis, shownotes a návrhy klipů na sociální sítě z epizody.
+    role: alternative
 incomePotential:
   min: 0
   max: 12000
@@ -73,6 +82,11 @@ commonMistakes:
 watchOutFor:
   - Sponzorský obsah musí být v ČR jasně označen jako reklama.
   - U rozhovorů s hosty si předem ujasni, co lze publikovat a co ne.
+scalingTip: >
+  Jednu epizodu jde rozpustit do víc formátů – audiogram na sociální sítě,
+  krátké video klipy, psaný článek ze shownotes. Jakmile máš stabilní
+  poslechovost, nabídni firmám i produkci podcastu na klíč jako placenou
+  službu – firmy často chtějí podcast, ale nemají na to čas ani vybavení.
 tags:
   - podcast
   - audio

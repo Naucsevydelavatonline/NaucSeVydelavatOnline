@@ -28,6 +28,9 @@ firstClientTip: >
 tools:
   - toolId: shopify
     note: Založení e-shopu bez programování.
+  - toolId: datahawk
+    note: Sledování cen konkurence a výkonu produktů, jakmile prodáváš i na marketplace.
+    role: alternative
 incomePotential:
   min: 0
   max: 30000
@@ -75,6 +78,11 @@ commonMistakes:
 watchOutFor:
   - Reklamní účty mohou být zablokovány při porušení pravidel platformy – čti si podmínky.
   - Vždy definuj rozpočet, který jsi ochoten/ochotna při testování ztratit, a drž se ho.
+scalingTip: >
+  Škáluj jen produkty s prokázanou poptávkou – zvyš reklamní rozpočet
+  postupně, ne skokově. Jakmile máš 2-3 stabilní produkty, zvaž přechod
+  k vlastnímu skladu nebo private label u nejlépe prodávaného produktu,
+  kde je marže výrazně vyšší.
 tags:
   - ecommerce
   - dropshipping

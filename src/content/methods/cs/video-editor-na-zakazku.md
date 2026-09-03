@@ -28,6 +28,15 @@ firstClientTip: >
 tools:
   - toolId: capcut
     note: Rychlý střih pro kratší formáty a sociální sítě.
+  - toolId: descript
+    note: Střih delších videí/podcastů úpravou textového přepisu.
+    role: core
+  - toolId: veed
+    note: Online alternativa k CapCutu přímo v prohlížeči.
+    role: alternative
+  - toolId: envato
+    note: Šablony, přechody a stock hudba, když nechceš vytvářet vše od nuly.
+    role: alternative
 incomePotential:
   min: 4000
   max: 40000
@@ -77,6 +86,10 @@ commonMistakes:
 watchOutFor:
   - Ujasni si počet zahrnutých revizí ve smlouvě/nabídce předem.
   - Dbej na zálohování rozpracovaných projektů – ztráta dat u dlouhého projektu je nákladná.
+scalingTip: >
+  Standardizuj proces (šablony projektů, přednastavené efekty a přechody),
+  ať zvládneš víc zakázek za stejný čas. Od určitého objemu zvaž zaučení
+  druhého editora a přechod z jednotlivce na malé studio.
 tags:
   - freelance
   - video-editor

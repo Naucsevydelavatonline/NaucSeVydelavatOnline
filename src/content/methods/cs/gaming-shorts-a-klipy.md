@@ -28,6 +28,9 @@ firstClientTip: >
 tools:
   - toolId: capcut
     note: Rychlý střih s titulky a šablonami pro krátký formát.
+  - toolId: ngram
+    note: Automatické hledání nejlepších momentů v dlouhém streamu/videu.
+    role: alternative
 incomePotential:
   min: 0
   max: 12000
@@ -73,6 +76,10 @@ commonMistakes:
 watchOutFor:
   - Autorská práva u herních záběrů a hudby ve hře – ověř si podmínky použití daného titulu.
   - Platformy mají různá pravidla pro reupload cizího obsahu bez přidané hodnoty.
+scalingTip: >
+  Domluv se s víc streamery najednou a stříhej klipy pro víc kanálů
+  paralelně – proces výběru a titulkování zůstává stejný. Časem nabídni
+  stříhání klipů jako placenou službu přímo streamerům s vlastním publikem.
 tags:
   - gaming
   - shorts

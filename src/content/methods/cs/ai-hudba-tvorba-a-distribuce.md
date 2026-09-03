@@ -66,7 +66,7 @@ zeroToStartSteps:
   - Vygeneruj 10-15 skladeb a vyber ty nejkvalitnější.
   - Založ účet u distributora a nahraj první vlnu skladeb.
   - Vytvoř tematický playlist nebo kanál pro konzistentní publikování.
-  - Sleduj statistiky přehrání a doladíš styl podle zpětné vazby.
+  - Sleduj statistiky přehrání a dolaď styl podle zpětné vazby.
 firstWeekPlan:
   - period: Den 1–3
     task: Vyber žánr, vygeneruj a vyber první skladby.
@@ -81,6 +81,11 @@ commonMistakes:
 watchOutFor:
   - Platformy (Spotify a další) průběžně mění pravidla pro označování a přijímání AI hudby – sleduj aktuální podmínky.
   - Ověř si licenční podmínky nástroje pro komerční distribuci a monetizaci.
+scalingTip: >
+  Zkus víc žánrů/playlistů paralelně a sleduj, který sbírá poslechy
+  nejrychleji, pak do něj investuj víc skladeb. Skladby jdou i licencovat
+  přímo tvůrcům videí/podcastů za jednorázový poplatek, což vydělá rychleji
+  než čekat na růst streamovacích royalt.
 tags:
   - ai-hudba
   - ai-music

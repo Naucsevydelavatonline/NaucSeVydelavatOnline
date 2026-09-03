@@ -31,6 +31,9 @@ tools:
     note: Návrh vizuální identity postavy.
   - toolId: elevenlabs
     note: Konzistentní AI hlas pro postavu.
+  - toolId: heygen
+    note: Hotový AI avatar s pohybem a mimikou, pokud nechceš skládat postavu jen ze statických obrázků.
+    role: alternative
 incomePotential:
   min: 0
   max: 30000
@@ -71,6 +74,11 @@ commonMistakes:
 watchOutFor:
   - Některé platformy vyžadují označení AI generovaného obsahu – ověř si aktuální pravidla.
   - Konzistence napříč videi je technicky náročná – testuj nástroje předem.
+scalingTip: >
+  Jednou zavedená postava jde rozšířit na víc platforem (Instagram,
+  TikTok, YouTube) se stejným obsahem v různých formátech, a časem přidat
+  vlastní merch nebo digitální produkt pod jejím jménem. Populární
+  postava se dá i licencovat značkám nebo prodat jako celek.
 tags:
   - ai-avatar
   - virtualni-influencer

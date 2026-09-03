@@ -28,6 +28,12 @@ firstClientTip: >
 tools:
   - toolId: canva
     note: Vizuální šablony pro příběhy a příspěvky.
+  - toolId: later
+    note: Plánování příspěvků dopředu a vizuální náhled feedu.
+    role: alternative
+  - toolId: manychat
+    note: Automatické odpovědi na komentáře/DM, když ti komunikace přeroste přes možnosti odpovídat ručně.
+    role: alternative
 incomePotential:
   min: 0
   max: 25000
@@ -74,6 +80,11 @@ commonMistakes:
 watchOutFor:
   - Placené spolupráce musí být v Česku i podle pravidel platformy označené jako reklama.
   - Algoritmus se mění – dosah může kolísat bez ohledu na kvalitu obsahu.
+scalingTip: >
+  Postupně diverzifikuj monetizaci (spolupráce → affiliate → vlastní
+  produkt) a přenes si publikum i na kanál, který ti nikdo nemůže vypnout
+  (e-mailový seznam). Časem zvaž druhý účet v příbuzné niše nebo rozšíření
+  na YouTube/TikTok se stejným obsahem v jiném formátu.
 tags:
   - socialni-site
   - instagram

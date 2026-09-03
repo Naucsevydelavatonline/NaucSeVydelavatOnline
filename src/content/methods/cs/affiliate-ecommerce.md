@@ -29,6 +29,12 @@ firstClientTip: >
 tools:
   - toolId: chatgpt
     note: Research produktů a strukturování srovnávacích článků.
+  - toolId: surfer
+    note: SEO struktura recenzí a srovnání, ať je Google najde.
+    role: core
+  - toolId: datahawk
+    note: Sledování cen a dostupnosti produktů, které doporučuješ.
+    role: alternative
 incomePotential:
   min: 0
   max: 25000
@@ -70,6 +76,11 @@ commonMistakes:
 watchOutFor:
   - Affiliate odkazy musí být viditelně označené (viz Affiliate odkazy v patičce webu).
   - Podmínky affiliate programů (provize, cookie doba) se mohou kdykoliv změnit ze strany e-shopu.
+scalingTip: >
+  Rozšiř obsah na sousední produktové kategorie, jakmile jedna funguje
+  (stejný proces, nové téma). Diverzifikuj mezi víc affiliate programů,
+  ať výpadek jednoho neohrozí celý příjem, a přidej e-mailový seznam pro
+  opakované návštěvy.
 tags:
   - ecommerce
   - affiliate

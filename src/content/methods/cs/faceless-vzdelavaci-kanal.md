@@ -32,6 +32,9 @@ tools:
     note: Pomoc se strukturou scénáře a titulky.
   - toolId: canva
     note: Prezentace a vizuální podklady pro video.
+  - toolId: heygen
+    note: AI mluvící avatar místo screen recordingu/prezentace, pokud chceš víc "tvář" kanálu.
+    role: alternative
 incomePotential:
   min: 0
   max: 18000
@@ -73,6 +76,11 @@ commonMistakes:
 watchOutFor:
   - U odborných témat (zdraví, finance, právo) ověřuj fakta obzvlášť pečlivě – chyby poškodí důvěryhodnost.
   - Respektuj licence u použitých obrázků/hudby v prezentacích.
+scalingTip: >
+  Seskup videa na podobné téma do playlistu/mini-kurzu a odkazuj mezi
+  sebou navzájem – zvyšuje to čas strávený na kanálu. Zavedená expertíza
+  se dá později prodat i jako placený kurz nebo konzultace, ne jen sledovat
+  na YouTube zdarma.
 tags:
   - faceless-youtube
   - vzdelavaci-obsah

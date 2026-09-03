@@ -70,6 +70,10 @@ commonMistakes:
 watchOutFor:
   - Ujasni si platební podmínky a storno pravidla předem, ideálně písemně.
   - Buď opatrný/á u nabídek "garantovaného" postupu do vyššího ranku výměnou za peníze mimo koučink – hraničí to s podvodným boostingem.
+scalingTip: >
+  Nahraj si opakovaně používané vysvětlení jako video kurz a prodávej ho
+  vedle živého koučinku – vydělá i mimo tvůj omezený čas na hodiny. Jakmile
+  máš pověst v komunitě, zvaž skupinové lekce místo jen individuálních.
 tags:
   - gaming
   - esport

@@ -68,6 +68,10 @@ commonMistakes:
 watchOutFor:
   - Affiliate odkazy musí být viditelně a čitelně označené (viz Affiliate odkazy v patičce webu).
   - Ověřuj si aktuální podmínky affiliate programů – provize a pravidla se mění.
+scalingTip: >
+  Rozšiř doporučení na sousední kategorie vybavení (např. od klávesnic k
+  celým setupům) a kombinuj to se streamováním nebo gaming Shorts, kde
+  odkazy přirozeně zapadnou do obsahu, který už tvoříš.
 tags:
   - gaming
   - affiliate

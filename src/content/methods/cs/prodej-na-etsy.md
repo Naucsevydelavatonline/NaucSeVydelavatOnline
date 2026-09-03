@@ -29,6 +29,9 @@ firstClientTip: >
 tools:
   - toolId: canva
     note: Tvorba náhledů produktů a digitálních šablon.
+  - toolId: printify
+    note: Výroba a expedice, pokud prodáváš fyzické potisky přes Etsy.
+    role: alternative
 incomePotential:
   min: 0
   max: 20000
@@ -72,6 +75,10 @@ commonMistakes:
 watchOutFor:
   - Etsy má pravidla pro označování AI generovaných produktů – ověř si aktuální podmínky.
   - U fyzických výrobků počítej s časem na výrobu při plánování objednávek.
+scalingTip: >
+  Rozšiř úspěšné produkty do dalších variant (barvy, formáty, velikosti)
+  a otevři druhý prodejní kanál (vlastní e-shop) vedle Etsy, aby ti
+  neplynula veškerá marže do poplatků jedné platformy.
 tags:
   - ecommerce
   - etsy

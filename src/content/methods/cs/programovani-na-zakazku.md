@@ -27,6 +27,12 @@ firstClientTip: >
 tools:
   - toolId: upwork
     note: Dlouhodobější zakázky od zahraničních klientů.
+  - toolId: hostinger
+    note: Hosting pro klientské weby, které stavíš.
+    role: core
+  - toolId: coursera
+    note: Doučení konkrétní technologie/jazyka, než ji začneš nabízet klientům.
+    role: alternative
 incomePotential:
   min: 5000
   max: 50000
@@ -67,6 +73,11 @@ commonMistakes:
 watchOutFor:
   - Bez smlouvy o rozsahu práce hrozí nekonečné bezplatné úpravy "ještě tohle".
   - U citlivých dat (platby, osobní údaje) dbej na základní zabezpečení už od návrhu.
+scalingTip: >
+  Přejdi od jednorázových projektů k měsíční údržbě/podpoře pro stálé
+  klienty – stabilnější příjem než pořád hledat nové zakázky. Od určitého
+  objemu zvaž spolupráci s dalším vývojářem/designérem a přebírání
+  větších projektů společně.
 tags:
   - freelance
   - programovani

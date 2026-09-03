@@ -25,12 +25,20 @@ firstClientTip: >
   "Zákazník" tady zpočátku znamená diváka a algoritmus. Publikuj denně
   aspoň 1 video po dobu 30 dní ve stejném formátu a tématu – teprve pak má
   smysl hodnotit, jestli to funguje. Sponzoři se ozvou sami, jakmile budeš
-  mít stabilní sledovanost v jedné niše.
+  mít stabilní sledovanost v jedné niše – první sponzorované video se
+  obvykle cení podle počtu zhlédnutí (řádově stovky až nižší tisíce Kč za
+  spolupráci u menšího kanálu), ne paušálem. Nabídku pošli přímo značkám
+  v tvé niši s konkrétními čísly sledovanosti, ne obecnou žádostí o spolupráci.
 tools:
   - toolId: capcut
     note: Střih, titulky a šablony přímo v mobilu.
+    role: core
   - toolId: elevenlabs
     note: AI hlas, pokud nechceš mluvit sám/sama.
+    role: core
+  - toolId: veed
+    note: Alternativa ke CapCutu, pokud radši stříháš v prohlížeči na počítači.
+    role: alternative
 incomePotential:
   min: 0
   max: 15000
@@ -78,6 +86,11 @@ commonMistakes:
 watchOutFor:
   - Autorská hudba a klipy třetích stran mohou vést k blokaci videa – používej licencovaný/royalty-free obsah.
   - Podmínky monetizace (počet sledujících, zhlédnutí) se u platforem mění – ověřuj si aktuální prahové hodnoty.
+scalingTip: >
+  Jakmile máš fungující formát, rozšiř ho na víc platforem najednou (jedno
+  video → TikTok, Shorts, Reels) a postupně přidávej druhý kanál v
+  příbuzné niše. Nejlepší škálování je ale přechod od reklamních fondů k
+  přímým sponzorům a vlastnímu produktu – tam je strop příjmu mnohem výš.
 tags:
   - ai-video
   - shorts

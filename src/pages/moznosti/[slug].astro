@@ -35,6 +35,8 @@ const relatedMethods = (await getMethodsByCategory(data.category))
   .filter((m) => m.data.slug !== data.slug)
   .slice(0, 3);
 const relatedLessons = await getRelatedAcademyLessons(data.slug);
+const coreTools = data.tools.filter((t) => t.role === 'core');
+const alternativeTools = data.tools.filter((t) => t.role === 'alternative');
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -211,11 +213,26 @@ const jsonLd = {
       {data.tools.length > 0 && (
         <section>
           <h2 class="font-display text-xl font-bold">{ui.method.sections.tools}</h2>
-          <div class="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
-            {data.tools.map((tool) => (
-              <AffiliateLink toolId={tool.toolId} note={tool.note} />
-            ))}
-          </div>
+          {coreTools.length > 0 && (
+            <div class="mt-3">
+              <p class="text-xs font-semibold uppercase tracking-wide text-muted">{ui.method.toolsCore}</p>
+              <div class="mt-2 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {coreTools.map((tool) => (
+                  <AffiliateLink toolId={tool.toolId} note={tool.note} />
+                ))}
+              </div>
+            </div>
+          )}
+          {alternativeTools.length > 0 && (
+            <div class="mt-4">
+              <p class="text-xs font-semibold uppercase tracking-wide text-muted">{ui.method.toolsAlternative}</p>
+              <div class="mt-2 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {alternativeTools.map((tool) => (
+                  <AffiliateLink toolId={tool.toolId} note={tool.note} />
+                ))}
+              </div>
+            </div>
+          )}
         </section>
       )}
 
@@ -252,6 +269,13 @@ const jsonLd = {
               </li>
             ))}
           </ul>
+        </section>
+      )}
+
+      {data.scalingTip && (
+        <section>
+          <h2 class="font-display text-xl font-bold">{ui.method.sections.scalingTip}</h2>
+          <p class="mt-3 text-muted">{data.scalingTip}</p>
         </section>
       )}
 

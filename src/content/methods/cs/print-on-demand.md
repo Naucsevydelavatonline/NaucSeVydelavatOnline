@@ -25,10 +25,21 @@ firstClientTip: >
   povolání, mem) místo obecných motivů. Úzké cílení usnadní i cílenou
   reklamu na malém rozpočtu.
 tools:
+  - toolId: printify
+    note: Výroba a expedice potisků, napojení na Etsy/Shopify.
+    role: core
   - toolId: midjourney
     note: Návrh originálních motivů pro potisk.
+    role: core
   - toolId: canva
     note: Úprava a příprava návrhu do tiskového formátu.
+    role: core
+  - toolId: printful
+    note: Alternativa k Printify, obvykle o něco vyšší kvalita tisku.
+    role: alternative
+  - toolId: envato
+    note: Hotové šablony motivů, pokud nechceš navrhovat úplně od nuly.
+    role: alternative
 incomePotential:
   min: 0
   max: 15000
@@ -47,11 +58,13 @@ advantages:
 platforms:
   - name: Etsy
     url: https://www.etsy.com/
+    toolId: etsy
     regions: celosvětově, silné USA publikum
     pricingNote: poplatek za výpis + provize z prodeje
-    hasAffiliateProgram: false
-  - name: Redbubble / Printful (print-on-demand tržiště)
-    url: https://www.printful.com/
+    hasAffiliateProgram: true
+  - name: Printify
+    url: https://printify.com/
+    toolId: printify
     regions: celosvětově
     pricingNote: zdarma se zapojit, platíš jen výrobu
     hasAffiliateProgram: true
@@ -75,6 +88,10 @@ commonMistakes:
 watchOutFor:
   - Autorská práva u fontů a klipartů se liší platforma od platformy – ověřuj si licence.
   - Kvalita tisku se liší mezi dodavateli – objednej si vzorek než začneš propagovat ve velkém.
+scalingTip: >
+  Rozšiř úspěšné motivy na víc typů produktů (tričko → hrnek → plakát) a
+  otevři druhý prodejní kanál (vlastní e-shop vedle Etsy). Vlastní silná
+  značka s rozpoznatelným stylem se prodává líp než náhodné motivy.
 tags:
   - ecommerce
   - print-on-demand

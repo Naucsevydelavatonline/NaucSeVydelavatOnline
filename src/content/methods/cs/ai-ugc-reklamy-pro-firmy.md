@@ -28,8 +28,15 @@ firstClientTip: >
   si řekneš o peníze. Konverze z "hotové ukázky" je mnohem vyšší než z
   obecné nabídky služby.
 tools:
+  - toolId: heygen
+    note: AI avatar s pohybem a mimikou pro samotné UGC video.
+    role: core
   - toolId: capcut
     note: Finální střih a formát pro reklamní platformy.
+    role: core
+  - toolId: influencer-hero
+    note: Pokud chceš kombinovat AI avatary se skutečnými tvůrci pro UGC kampaně.
+    role: alternative
 incomePotential:
   min: 5000
   max: 40000
@@ -76,6 +83,11 @@ commonMistakes:
 watchOutFor:
   - Reklamní platformy (Meta, TikTok) mají pravidla pro AI generovaný obsah – ověřuj si aktuální podmínky.
   - Klient musí mít práva na použití produktových záběrů/fotek v reklamě.
+scalingTip: >
+  Postav si knihovnu ověřených scénářů a AI avatarů, kterou jen upravuješ
+  pro nový produkt – dramaticky to zkrátí čas na zakázku. Nabídni
+  stálým klientům měsíční paušál za X videí místo jednorázových objednávek
+  a časem si najmi copywritera na scénáře, ať zvládneš víc klientů zároveň.
 tags:
   - ai-ugc
   - ai-video

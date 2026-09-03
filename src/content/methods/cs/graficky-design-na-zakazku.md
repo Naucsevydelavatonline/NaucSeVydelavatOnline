@@ -30,6 +30,12 @@ tools:
     note: Rychlá tvorba grafiky i pro klienty s menším rozpočtem.
   - toolId: fiverr
     note: Nabízení služeb zahraničním klientům.
+  - toolId: envato
+    note: Šablony a grafické prvky, které zrychlí zakázky s napjatým termínem.
+    role: alternative
+  - toolId: skillshare
+    note: Prohloubení dovedností v designu, než začneš nabízet dražší zakázky.
+    role: alternative
 incomePotential:
   min: 3000
   max: 35000
@@ -78,6 +84,11 @@ commonMistakes:
 watchOutFor:
   - Bez smlouvy/rozsahu práce hrozí nekonečné bezplatné revize.
   - Ověř si licence fontů a stock obrázků použitých v komerční práci pro klienta.
+scalingTip: >
+  Vytvoř si vlastní knihovnu šablon a stylových průvodců, které jde
+  recyklovat mezi podobnými klienty (např. "loga pro kavárny"). Jakmile
+  máš víc poptávky, než zvládneš, začni odmítat nebo přeposílat nevhodné
+  zakázky jinému designérovi za provizi.
 tags:
   - design
   - freelance

@@ -66,12 +66,15 @@ const methods = defineCollection({
       // Jak získat prvního zákazníka (delší markdown text v body, tady jen shrnutí)
       firstClientTip: z.string(),
 
-      // Doporučené nástroje – odkazy do affiliate registru (src/data/affiliate-links.ts)
+      // Doporučené nástroje – odkazy do affiliate registru (src/data/affiliate-links.ts).
+      // `role` řídí rozdělení na "Doporučený základ" (core) a "Alternativy"
+      // na detailu metody – viz src/pages/moznosti/[slug].astro.
       tools: z
         .array(
           z.object({
             toolId: z.string(),
             note: z.string().optional(),
+            role: z.enum(['core', 'alternative']).default('core'),
           })
         )
         .default([]),
@@ -125,6 +128,10 @@ const methods = defineCollection({
       // Časté chyby / na co si dát pozor
       commonMistakes: z.array(z.string()).default([]),
       watchOutFor: z.array(z.string()).default([]),
+
+      // Jak metodu později škálovat (volitelné – ne každá metoda má
+      // netriviální škálování nad rámec "dělej to samé pro víc klientů").
+      scalingTip: z.string().optional(),
 
       // Filtrování a vizuál
       tags: z.array(z.string()).default([]),

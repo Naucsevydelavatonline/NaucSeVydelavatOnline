@@ -32,6 +32,9 @@ tools:
     note: Vývoj příběhu a scénáře.
   - toolId: capcut
     note: Finální sestavení a export videa.
+  - toolId: runway
+    note: AI generování vizuálů/klipů podle scénáře.
+    role: core
 incomePotential:
   min: 3000
   max: 35000
@@ -64,7 +67,7 @@ firstWeekPlan:
   - period: Týden 1
     task: Zvládni nástroje, vytvoř ukázkové video (showreel).
   - period: Týden 2
-    task: Založ profil/nabídku a osloř první potenciální klienty.
+    task: Založ profil/nabídku a oslov první potenciální klienty.
 commonMistakes:
   - Slíbit klientovi kvalitu, kterou aktuální AI nástroje ještě nezvládnou.
   - Nemít jasný ceník a účtovat "od oka".
@@ -72,6 +75,11 @@ commonMistakes:
 watchOutFor:
   - Ujasni si s klientem licenci a práva k použití AI vygenerovaného obsahu předem.
   - Některé AI nástroje mají omezení na komerční užití v levnějších tarifech.
+scalingTip: >
+  Postav si šablony/presety pro každý krok řetězce (styl vizuálů, typ
+  hlasu, střihová struktura), ať další zakázku nezačínáš od nuly. Jakmile
+  máš stálé klienty, zvaž zaučení druhého člověka na jeden krok procesu
+  (např. střih), abys nebyl/a jediné úzké hrdlo výroby.
 tags:
   - ai-video
   - ai-obrazky

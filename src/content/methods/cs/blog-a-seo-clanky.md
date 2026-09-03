@@ -28,6 +28,18 @@ firstClientTip: >
 tools:
   - toolId: chatgpt
     note: Pomoc s researchem a osnovou článků.
+  - toolId: hostinger
+    note: Hosting a doména pro rozjezd blogu.
+    role: core
+  - toolId: surfer
+    note: SEO struktura a klíčová slova pro konkrétní článek.
+    role: alternative
+  - toolId: semrush
+    note: Širší výzkum klíčových slov a sledování konkurence.
+    role: alternative
+  - toolId: grammarly
+    note: Kontrola gramatiky, pokud píšeš i v angličtině.
+    role: alternative
 incomePotential:
   min: 0
   max: 20000
@@ -74,6 +86,11 @@ commonMistakes:
 watchOutFor:
   - Google penalizuje obsah bez přidané hodnoty – piš z vlastní zkušenosti, ne jen přehled.
   - Výsledky přichází se zpožděním měsíců – nevzdávej to po 4 týdnech.
+scalingTip: >
+  Jakmile blog generuje stabilní návštěvnost, přidej e-mailový seznam a
+  vlastní digitální produkt navíc k reklamě a affiliate odkazům. Časem
+  zvaž najmutí dalšího autora na část článků, ať publikuješ víc, aniž bys
+  psal/a úplně všechno sám/sama.
 tags:
   - blog
   - seo

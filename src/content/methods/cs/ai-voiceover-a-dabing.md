@@ -28,6 +28,9 @@ firstClientTip: >
 tools:
   - toolId: elevenlabs
     note: Nejpoužívanější nástroj pro AI hlasy a dabing.
+  - toolId: murf-ai
+    note: Alternativa k ElevenLabs, hodí se hlavně pro firemní/školicí videa.
+    role: alternative
 incomePotential:
   min: 3000
   max: 25000
@@ -76,6 +79,11 @@ commonMistakes:
 watchOutFor:
   - Některé AI hlasové nástroje mají omezení na komerční použití v levnějších tarifech – ověř si licenci.
   - Dabing reálné osoby (klonování jejího hlasu) vždy vyžaduje jasný souhlas dané osoby.
+scalingTip: >
+  Škáluj přes balíčky pro pravidelné klienty (měsíční paušál za X minut
+  hotového audia místo jednorázových zakázek) a nabídni navazující služby
+  – titulky, jednoduchý střih nebo AI dabing do dalších jazyků za
+  příplatek. Časem se vyplatí zaučit druhého člověka na kontrolu kvality.
 tags:
   - ai-voiceover
   - ai-dabing

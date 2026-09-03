@@ -31,6 +31,9 @@ tools:
     note: Generování AI obrázků ve vysoké kvalitě.
   - toolId: canva
     note: Finální úprava, šablony a AI nástroje přímo v editoru.
+  - toolId: envato
+    note: Hotové šablony a grafické prvky pro rychlejší zakázky.
+    role: alternative
 incomePotential:
   min: 2000
   max: 20000
@@ -79,6 +82,11 @@ commonMistakes:
 watchOutFor:
   - Podmínky komerčního použití se mezi AI nástroji liší – ověř si licenci před prodejem klientovi.
   - Některé platformy AI generovaný obsah označují nebo omezují – informuj klienta předem.
+scalingTip: >
+  Zabal si nejžádanější formát (např. thumbnaily) do měsíčního balíčku
+  místo účtování po kuse – stabilnější příjem a méně vyjednávání o ceně
+  pokaždé znovu. Delegováním úprav/exportu na asistenta si uvolníš čas na
+  víc klientů.
 tags:
   - ai-obrazky
   - ai-design

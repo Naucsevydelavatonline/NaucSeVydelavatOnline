@@ -32,6 +32,9 @@ tools:
     note: Vizuální stavba automatizací bez programování.
   - toolId: chatgpt
     note: AI vrstva pro rozhodování a generování textů uvnitř automatizace.
+  - toolId: browse-ai
+    note: Sbírání a sledování dat z webů jako vstup pro automatizaci/AI agenta.
+    role: alternative
 incomePotential:
   min: 5000
   max: 60000
@@ -78,6 +81,11 @@ commonMistakes:
 watchOutFor:
   - Automatizace pracující s citlivými daty (platby, osobní údaje) vyžaduje extra opatrnost a souhlas klienta.
   - Bez pravidelné údržby se automatizace časem rozbije – domluv si to v podmínkách spolupráce předem.
+scalingTip: >
+  Postav si knihovnu hotových "šablon" automatizací pro časté problémy
+  (odpovědi na dotazy, zpracování objednávek...), které jen upravíš pro
+  dalšího klienta místo stavby od nuly. Nabídni měsíční paušál za údržbu
+  víc klientům najednou – to je stabilnější příjem než jednorázové projekty.
 tags:
   - ai-automatizace
   - ai-agenti

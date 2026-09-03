@@ -72,6 +72,10 @@ commonMistakes:
 watchOutFor:
   - Ujasni si se značkou práva k použití videa (kde všude ho smí použít, na jak dlouho).
   - Placený UGC obsah musí být v reklamě značky odpovídajícím způsobem transparentní.
+scalingTip: >
+  Nabídni balíčky (5-10 videí najednou pro víc produktů jedné značky)
+  místo jednotlivých kusů. Jakmile máš stálou poptávku, zapoj i další
+  tvůrce a staň se prostředníkem mezi značkami a menšími UGC creatory.
 tags:
   - ugc
   - tvorba-obsahu

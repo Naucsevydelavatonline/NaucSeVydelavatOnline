@@ -32,6 +32,18 @@ tools:
     note: Tvorba reklamních textů a nastavení konverzačních chatbotů.
   - toolId: make
     note: Propojení formulářů, CRM a automatické zpracování poptávek.
+  - toolId: manychat
+    note: Automatizace odpovědí a lead generace přes DM na Instagramu/Messengeru.
+    role: core
+  - toolId: leadpages
+    note: Rychlá stavba landing page pro sběr poptávek bez programování.
+    role: core
+  - toolId: adcreative-ai
+    note: Generování reklamních kreativ/variant textu pro testování víc verzí najednou.
+    role: alternative
+  - toolId: activecampaign
+    note: E-mailové sekvence a jednoduché CRM pro navazující péči o poptávky.
+    role: alternative
 incomePotential:
   min: 8000
   max: 70000
@@ -77,6 +89,11 @@ commonMistakes:
 watchOutFor:
   - Vždy měj s klientem jasně napsané, kdo schvaluje výdaje na reklamu a jaké jsou limity.
   - Zákaznická data získaná přes formuláře/chatboty podléhají pravidlům GDPR – nastav to správně od začátku.
+scalingTip: >
+  Standardizuj si nabídku do 2-3 pevných balíčků (např. "lead generace
+  základ", "kompletní AI marketing") místo řešení každého klienta na míru
+  od nuly. Jakmile máš 4+ klientů, zvaž najmutí specialisty na jednu část
+  (reklamy nebo automatizace) a soustřeď se sám/sama na strategii a klienty.
 tags:
   - ai-marketing
   - ai-lead-generation

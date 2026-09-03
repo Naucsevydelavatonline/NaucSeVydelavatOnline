@@ -74,6 +74,11 @@ commonMistakes:
 watchOutFor:
   - Sleduj podmínky platforem pro AI/avatarový obsah – pravidla se vyvíjí.
   - I anonymní postava potřebuje konzistentní osobnost, jinak diváky neudrží.
+scalingTip: >
+  Rozšiř postavu na víc formátů (klipy, merch, vlastní Discord komunita)
+  a případně na víc jazyků/platforem se stejným avatarem. Populární VTuber
+  postava se dá i časem předat jinému performerovi, pokud je "postava",
+  ne jen tvůj osobní projekt.
 tags:
   - vtuber
   - streaming

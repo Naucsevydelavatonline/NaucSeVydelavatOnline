@@ -66,6 +66,11 @@ commonMistakes:
 watchOutFor:
   - Regulace finanční reklamy je v ČR přísnější než u běžného zboží – ověřuj si aktuální pravidla.
   - Nikdy nepiš o produktu jako o "bezrizikovém" nebo "garantovaném" – viz sekce Scam Alert.
+scalingTip: >
+  Rozšiř obsah na související finanční témata (spoření, pojištění,
+  investování) a buduj e-mailový seznam čtenářů, kterým můžeš dál
+  doporučovat relevantní produkty. Důvěryhodnost budovaná roky je tu
+  hlavní škálovatelné aktivum, ne objem obsahu.
 tags:
   - finance
   - affiliate

@@ -32,6 +32,9 @@ tools:
     note: Research podkladů a strukturování scénáře.
   - toolId: elevenlabs
     note: AI voiceover pro delší vyprávění.
+  - toolId: runway
+    note: Doplňkové AI vizuály tam, kde archivní záběry ani obrázky nestačí.
+    role: alternative
 incomePotential:
   min: 0
   max: 25000
@@ -71,6 +74,11 @@ commonMistakes:
 watchOutFor:
   - Věcné chyby v dlouhém formátu se hůř opravují a víc poškodí důvěryhodnost než u krátkého videa.
   - Sleduj autorská práva u použitých archivních záběrů a hudby.
+scalingTip: >
+  Jedno dobře prozkoumané téma jde rozpustit do víc videí (seriál) a
+  zároveň nastříhat na kratší klipy pro Shorts/TikTok – research se tak
+  zaplatí víckrát. Časem se vyplatí najmout researchera nebo scenáristu a
+  soustředit se sám/sama jen na finální kontrolu a hlas/tvář kanálu.
 tags:
   - ai-video
   - faceless-youtube

@@ -29,6 +29,9 @@ firstClientTip: >
 tools:
   - toolId: chatgpt
     note: Zrychlení psaní e-mailů, shrnutí a organizace úkolů.
+  - toolId: grammarly
+    note: Kontrola gramatiky u anglické komunikace se zahraničními klienty.
+    role: alternative
 incomePotential:
   min: 3000
   max: 25000
@@ -70,6 +73,10 @@ commonMistakes:
 watchOutFor:
   - Ujasni si přístupová práva k citlivým účtům klienta (e-mail, platby) a jejich bezpečné předávání.
   - Sleduj počet odpracovaných hodin transparentně, ideálně přes sdílený nástroj.
+scalingTip: >
+  Specializuj se na jeden typ klienta (např. e-commerce nebo podcasteři) a
+  účtuj si za výsledek/paušál, ne jen hodiny. Jakmile máš víc poptávky, než
+  zvládneš sám/sama, zaučuj a přeposílej část klientů dalšímu VA za provizi.
 tags:
   - freelance
   - virtualni-asistent

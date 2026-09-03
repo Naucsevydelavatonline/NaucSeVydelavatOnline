@@ -28,6 +28,9 @@ firstClientTip: >
 tools:
   - toolId: chatgpt
     note: Generování konceptů, research a úprava tónu textu.
+  - toolId: grammarly
+    note: Kontrola gramatiky a stylu, hlavně pro texty v angličtině.
+    role: alternative
 incomePotential:
   min: 3000
   max: 30000
@@ -76,6 +79,11 @@ commonMistakes:
 watchOutFor:
   - AI si umí fakta vymýšlet (halucinace) – vždy ověřuj čísla, jména a tvrzení.
   - Některé obory (zdraví, finance) mají přísnější požadavky na přesnost a možné právní důsledky.
+scalingTip: >
+  Nabídni stálým klientům měsíční paušál (např. "4 e-maily + 2 landing
+  page texty měsíčně") místo jednotlivých textů. Jakmile máš víc poptávky,
+  než zvládneš sám/sama, zaučuj druhého copywritera a kontroluj jen
+  finální kvalitu.
 tags:
   - ai-copywriting
   - ai-marketing

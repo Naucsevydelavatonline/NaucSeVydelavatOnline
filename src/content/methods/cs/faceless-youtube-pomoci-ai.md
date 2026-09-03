@@ -30,6 +30,12 @@ tools:
     note: Psaní scénářů a research témat.
   - toolId: elevenlabs
     note: AI voiceover pro celé video.
+  - toolId: runway
+    note: AI vizuály/klipy tam, kde nestačí statické obrázky.
+    role: alternative
+  - toolId: heygen
+    note: AI mluvící avatar jako alternativa k čistě hlasovému vyprávění.
+    role: alternative
 incomePotential:
   min: 0
   max: 20000
@@ -72,6 +78,11 @@ commonMistakes:
 watchOutFor:
   - YouTube může omezit monetizaci u "opakovaného" nebo nízko-hodnotového AI obsahu – vkládej vlastní úhel pohledu.
   - Autorská hudba/klipy třetích stran mohou vést k blokaci nebo strikeu.
+scalingTip: >
+  Jakmile máš zaběhnutý proces na jednom kanálu, replikuj ho na druhý
+  kanál v jiné faceless niši – šablona scénář→hlas→vizuály→střih zůstává
+  stejná. Časem jde i outsourcovat jednotlivé kroky (např. střih) a sám/a
+  se soustředit jen na téma a kvalitu scénářů.
 tags:
   - ai-video
   - faceless-youtube

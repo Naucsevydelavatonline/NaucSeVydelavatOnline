@@ -28,6 +28,9 @@ firstClientTip: >
 tools:
   - toolId: canva
     note: Grafické zpracování e-booku nebo šablon.
+  - toolId: learnworlds
+    note: Pokud je produktem spíš strukturovaný kurz než e-book/šablona.
+    role: alternative
 incomePotential:
   min: 0
   max: 40000
@@ -72,6 +75,11 @@ commonMistakes:
 watchOutFor:
   - Bez existujícího publika je prodej výrazně pomalejší – zvaž nejdřív budování publika jinde.
   - Ochrana produktu proti sdílení není 100%, počítej s tím při ceně a licenci.
+scalingTip: >
+  Přidej vyšší cenovou hladinu (základní produkt → rozšířená verze s
+  osobní konzultací) a postupně stavěj celou řadu produktů pro stejné
+  publikum. Affiliate program pro vlastní zákazníky/čtenáře dokáže přivést
+  další prodeje bez placené reklamy.
 tags:
   - online-podnikani
   - digitalni-produkt

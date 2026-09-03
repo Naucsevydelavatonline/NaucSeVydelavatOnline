@@ -74,6 +74,11 @@ commonMistakes:
 watchOutFor:
   - Streamování cizí hudby nebo videí může vést k blokaci/omezení streamu kvůli autorským právům.
   - Prahové hodnoty pro partnerství/monetizaci se u platforem liší a mění se v čase.
+scalingTip: >
+  Recykluj nejlepší momenty streamu do klipů na Shorts/TikTok – přivádí
+  to nové diváky zpátky na živý stream. Jakmile máš stabilní komunitu,
+  přidej sponzoring herními značkami a affiliate odkazy na vybavení,
+  které reálně používáš.
 tags:
   - streaming
   - gaming
