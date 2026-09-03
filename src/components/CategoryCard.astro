@@ -1,0 +1,29 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getCategoryStyle } from '../lib/categoryStyles';
+
+interface Props {
+  category: CollectionEntry<'categories'>;
+  count: number;
+}
+
+const { category, count } = Astro.props;
+const { data } = category;
+const style = getCategoryStyle(data.id);
+const countLabel =
+  data.id === 'academy' ? `${count} lekcí` : data.id === 'scam-alert' ? `${count} varování` : `${count} možností`;
+---
+
+<a
+  href={`/kategorie/${data.id}`}
+  class={`group flex flex-col justify-between rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-0.5 hover:shadow-md ${style.border}`}
+>
+  <div>
+    <span class={`flex h-11 w-11 items-center justify-center rounded-xl text-2xl ${style.iconBg}`} aria-hidden="true">
+      {data.emoji}
+    </span>
+    <h3 class="mt-4 font-display text-lg font-semibold">{data.title}</h3>
+    <p class="mt-1.5 text-sm text-muted">{data.shortDescription}</p>
+  </div>
+  <p class="mt-4 text-xs font-semibold uppercase tracking-wide text-muted">{countLabel}</p>
+</a>

@@ -1,0 +1,100 @@
+---
+// MVP: formulář zatím jen simuluje odeslání na frontendu (bez backendu).
+// Až se vybere úložiště (vlastní API route / Google Sheet / Airtable...),
+// stačí v x-data nahradit `sent = true` skutečným fetch() voláním se
+// stejnými poli (name, email, method, income, story, anonymous) –
+// značka a struktura formuláře se nemění.
+import { ui } from '../i18n/cs';
+
+interface Props {
+  /** Předpona pro id/for atributy – ať nekolidují, pokud je formulář na stránce vícekrát. */
+  idPrefix?: string;
+}
+
+const { idPrefix = 'story' } = Astro.props;
+const s = ui.storySubmission;
+---
+
+<form
+  x-data="{ name: '', email: '', method: '', income: '', story: '', anonymous: false, sent: false }"
+  @submit.prevent="sent = true"
+  class="rounded-2xl border border-border bg-card p-6 text-left sm:p-8"
+>
+  <div x-show="!sent" class="space-y-4">
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div>
+        <label for={`${idPrefix}-name`} class="mb-1.5 block text-sm font-medium text-ink">{s.nameLabel}</label>
+        <input
+          id={`${idPrefix}-name`}
+          type="text"
+          required
+          x-model="name"
+          placeholder={s.namePlaceholder}
+          class="w-full rounded-lg border border-border bg-bg px-4 py-2.5 text-sm text-ink placeholder:text-muted focus:border-accent-dark focus:outline-none"
+        />
+      </div>
+      <div>
+        <label for={`${idPrefix}-email`} class="mb-1.5 block text-sm font-medium text-ink">{s.emailLabel}</label>
+        <input
+          id={`${idPrefix}-email`}
+          type="email"
+          required
+          x-model="email"
+          placeholder={s.emailPlaceholder}
+          class="w-full rounded-lg border border-border bg-bg px-4 py-2.5 text-sm text-ink placeholder:text-muted focus:border-accent-dark focus:outline-none"
+        />
+      </div>
+    </div>
+
+    <div>
+      <label for={`${idPrefix}-method`} class="mb-1.5 block text-sm font-medium text-ink">{s.methodLabel}</label>
+      <input
+        id={`${idPrefix}-method`}
+        type="text"
+        required
+        x-model="method"
+        placeholder={s.methodPlaceholder}
+        class="w-full rounded-lg border border-border bg-bg px-4 py-2.5 text-sm text-ink placeholder:text-muted focus:border-accent-dark focus:outline-none"
+      />
+    </div>
+
+    <div>
+      <label for={`${idPrefix}-income`} class="mb-1.5 block text-sm font-medium text-ink">{s.incomeLabel}</label>
+      <input
+        id={`${idPrefix}-income`}
+        type="text"
+        x-model="income"
+        placeholder={s.incomePlaceholder}
+        class="w-full rounded-lg border border-border bg-bg px-4 py-2.5 text-sm text-ink placeholder:text-muted focus:border-accent-dark focus:outline-none"
+      />
+    </div>
+
+    <div>
+      <label for={`${idPrefix}-story`} class="mb-1.5 block text-sm font-medium text-ink">{s.storyLabel}</label>
+      <textarea
+        id={`${idPrefix}-story`}
+        required
+        rows="5"
+        x-model="story"
+        placeholder={s.storyPlaceholder}
+        class="w-full resize-none rounded-lg border border-border bg-bg px-4 py-2.5 text-sm text-ink placeholder:text-muted focus:border-accent-dark focus:outline-none"
+      ></textarea>
+    </div>
+
+    <label class="flex items-center gap-2 text-sm text-ink">
+      <input type="checkbox" x-model="anonymous" class="h-4 w-4 rounded border-border accent-accent" />
+      {s.anonymousLabel}
+    </label>
+
+    <button
+      type="submit"
+      class="w-full rounded-full bg-ink px-6 py-3 font-display text-sm font-semibold text-white transition hover:bg-accent-dark hover:text-accent-ink sm:w-auto"
+    >
+      {s.cta}
+    </button>
+  </div>
+
+  <p x-cloak x-show="sent" class="rounded-xl bg-bg px-4 py-4 text-sm font-medium text-ink">
+    {s.sentMessage}
+  </p>
+</form>

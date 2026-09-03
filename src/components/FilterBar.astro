@@ -1,0 +1,62 @@
+---
+// Obaluje grid karet (slot) a přidává filtr nad ním. Filtrovací logika
+// žije v src/scripts/alpine.ts (Alpine.data('methodFilter', ...)) a
+// pracuje čistě nad data-* atributy vykreslenými v MethodCard.astro –
+// tahle komponenta jen vykresluje ovládací prvky (select/checkbox).
+import type { CollectionEntry } from 'astro:content';
+import { ui } from '../i18n/cs';
+
+interface Props {
+  categories?: CollectionEntry<'categories'>[];
+  lockMobileOnly?: boolean;
+  categoryDefault?: string;
+}
+
+const { categories, lockMobileOnly = false, categoryDefault = 'all' } = Astro.props;
+---
+
+<div
+  x-data={`methodFilter({ mobileOnlyDefault: ${lockMobileOnly}, categoryDefault: '${categoryDefault}' })`}
+  x-effect="apply()"
+>
+  <div class="flex flex-wrap items-center gap-3 rounded-2xl border border-border bg-card p-4">
+    {categories && (
+      <select x-model="category" class="rounded-lg border border-border bg-bg px-3 py-2 text-sm">
+        <option value="all">{ui.filter.allCategories}</option>
+        {categories.map((c) => (
+          <option value={c.data.id}>{c.data.emoji} {c.data.title}</option>
+        ))}
+      </select>
+    )}
+
+    <select x-model="difficulty" class="rounded-lg border border-border bg-bg px-3 py-2 text-sm">
+      <option value="all">{ui.filter.allDifficulty}</option>
+      <option value="zacatecnik">{ui.labels.difficulty.zacatecnik}</option>
+      <option value="stredni">{ui.labels.difficulty.stredni}</option>
+      <option value="pokrocily">{ui.labels.difficulty.pokrocily}</option>
+    </select>
+
+    <select x-model="cost" class="rounded-lg border border-border bg-bg px-3 py-2 text-sm">
+      <option value="all">{ui.filter.allCost}</option>
+      <option value="zdarma">{ui.labels.startupCost.zdarma}</option>
+      <option value="do-500">{ui.labels.startupCost['do-500']}</option>
+      <option value="do-5000">{ui.labels.startupCost['do-5000']}</option>
+      <option value="5000-plus">{ui.labels.startupCost['5000-plus']}</option>
+    </select>
+
+    {!lockMobileOnly && (
+      <label class="ml-auto flex items-center gap-2 text-sm font-medium">
+        <input type="checkbox" x-model="mobileOnly" class="h-4 w-4 rounded border-border accent-accent" />
+        📱 {ui.filter.mobileOnlyLabel}
+      </label>
+    )}
+  </div>
+
+  <div class="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    <slot />
+  </div>
+
+  <p x-cloak x-show="visibleCount === 0" class="mt-6 text-center text-sm text-muted">
+    {ui.filter.resultsEmpty}
+  </p>
+</div>

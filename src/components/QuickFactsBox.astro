@@ -1,0 +1,31 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { ui } from '../i18n/cs';
+import { startupCostLabel, difficultyLabel, timeToStartLabel, formatIncomeRange } from '../lib/labels';
+
+interface Props {
+  method: CollectionEntry<'methods'>;
+}
+
+const { data } = Astro.props.method;
+
+const facts = [
+  { label: ui.method.startupCost, value: startupCostLabel(data.startupCost) },
+  { label: ui.method.difficulty, value: difficultyLabel(data.difficulty) },
+  { label: ui.method.timeToStart, value: timeToStartLabel(data.timeToStart) },
+  { label: ui.method.mobileOnly, value: data.mobileOnly ? ui.method.mobileYes : ui.method.mobileNo },
+  {
+    label: ui.method.incomePotential,
+    value: formatIncomeRange(data.incomePotential.min, data.incomePotential.max, data.incomePotential.period),
+  },
+];
+---
+
+<div class="grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-5">
+  {facts.map((fact) => (
+    <div class="bg-card p-4">
+      <p class="text-xs font-semibold uppercase tracking-wide text-muted">{fact.label}</p>
+      <p class="mt-1 font-display text-sm font-semibold">{fact.value}</p>
+    </div>
+  ))}
+</div>

@@ -1,0 +1,19 @@
+---
+// Hlavní komunitní CTA webu – sbíráme reálné zkušenosti a příběhy
+// návštěvníků, ne e-maily do newsletteru (ten je teď jen nenápadně
+// ve Footer.astro). Samotný formulář žije v CommunityStoryForm.astro,
+// ať jde použít beze změny i na /o-projektu.
+import CommunityStoryForm from './CommunityStoryForm.astro';
+import { ui } from '../i18n/cs';
+---
+
+<section class="border-t border-border bg-ink text-white">
+  <div class="mx-auto max-w-2xl px-4 py-16 text-center sm:px-6 lg:px-8">
+    <h2 class="font-display text-3xl font-bold sm:text-4xl">{ui.storySubmission.title}</h2>
+    <p class="mt-3 text-white/70">{ui.storySubmission.subtitle}</p>
+
+    <div class="mt-8">
+      <CommunityStoryForm idPrefix="home-story" />
+    </div>
+  </div>
+</section>

@@ -1,0 +1,293 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import QuickFactsBox from '../../components/QuickFactsBox.astro';
+import MobileOnlyBadge from '../../components/MobileOnlyBadge.astro';
+import AffiliateLink from '../../components/AffiliateLink.astro';
+import MethodCard from '../../components/MethodCard.astro';
+import { ui } from '../../i18n/cs';
+import {
+  getMethods,
+  getCategoryById,
+  getRelatedAcademyLessons,
+  getMethodsByCategory,
+  getCategories,
+} from '../../lib/content';
+import { startupCostLabel, formatIncomeRange } from '../../lib/labels';
+
+export async function getStaticPaths() {
+  const methods = await getMethods();
+  return methods.map((method) => ({
+    params: { slug: method.data.slug },
+    props: { method },
+  }));
+}
+
+const { method } = Astro.props;
+const { data } = method;
+const { Content } = await render(method);
+
+const category = await getCategoryById(data.category);
+const secondaryCategories = data.secondaryCategories.length
+  ? (await getCategories()).filter((c) => data.secondaryCategories.includes(c.data.id))
+  : [];
+const relatedMethods = (await getMethodsByCategory(data.category))
+  .filter((m) => m.data.slug !== data.slug)
+  .slice(0, 3);
+const relatedLessons = await getRelatedAcademyLessons(data.slug);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: data.title,
+  description: data.shortDescription,
+  datePublished: data.publishedDate.toISOString(),
+  dateModified: (data.updatedDate ?? data.publishedDate).toISOString(),
+  inLanguage: 'cs',
+};
+---
+
+<BaseLayout
+  title={data.seoTitle ?? data.title}
+  description={data.seoDescription ?? data.shortDescription}
+  jsonLd={jsonLd}
+>
+  <article class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
+    <nav class="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted">
+      {category && (
+        <a href={`/kategorie/${category.data.id}`} class="hover:text-ink">
+          {category.data.emoji} {category.data.title}
+        </a>
+      )}
+      {secondaryCategories.map((c) => (
+        <>
+          <span aria-hidden="true">·</span>
+          <a href={`/kategorie/${c.data.id}`} class="hover:text-ink">
+            {c.data.emoji} {c.data.title}
+          </a>
+        </>
+      ))}
+    </nav>
+
+    <div class="mt-3 flex flex-wrap items-center gap-2">
+      {data.mobileOnly && <MobileOnlyBadge />}
+      {data.tags.map((tag) => (
+        <span class="rounded-full bg-bg px-2.5 py-1 text-xs font-medium text-muted">{tag}</span>
+      ))}
+    </div>
+
+    <h1 class="mt-4 font-display text-3xl font-bold leading-tight sm:text-4xl">{data.title}</h1>
+    <p class="mt-3 text-lg text-muted">{data.shortDescription}</p>
+
+    <div class="mt-8">
+      <QuickFactsBox method={method} />
+    </div>
+
+    <div class="mt-12 space-y-10">
+      <section>
+        <h2 class="font-display text-xl font-bold">{ui.method.sections.whatYouDo}</h2>
+        <p class="mt-3 text-muted">{data.whatYouDo}</p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-xl font-bold">{ui.method.sections.howYouEarn}</h2>
+        <p class="mt-3 text-muted">{data.howYouEarn}</p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-xl font-bold">{ui.method.sections.requirements}</h2>
+        <ul class="mt-3 space-y-2">
+          {data.requirements.map((req) => (
+            <li class="flex items-start gap-2 text-muted">
+              <span class="mt-0.5 text-accent-dark" aria-hidden="true">✓</span>
+              {req}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="font-display text-xl font-bold">{ui.method.sections.startupCost}</h2>
+        <p class="mt-3 text-muted">
+          <strong class="text-ink">{startupCostLabel(data.startupCost)}.</strong>{' '}
+          {data.startupCostNote}
+        </p>
+      </section>
+
+      {data.advantages.length > 0 && (
+        <section>
+          <h2 class="font-display text-xl font-bold">{ui.method.sections.advantages}</h2>
+          <ul class="mt-3 space-y-2">
+            {data.advantages.map((advantage) => (
+              <li class="flex items-start gap-2 text-muted">
+                <span class="mt-0.5 text-accent-dark" aria-hidden="true">✓</span>
+                {advantage}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <section>
+        <h2 class="font-display text-xl font-bold">{ui.method.sections.risks}</h2>
+        <ul class="mt-3 space-y-2">
+          {data.risks.map((risk) => (
+            <li class="flex items-start gap-2 text-muted">
+              <span class="mt-0.5 text-red-500" aria-hidden="true">!</span>
+              {risk}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {data.zeroToStartSteps.length > 0 && (
+        <section>
+          <h2 class="font-display text-xl font-bold">{ui.method.sections.zeroToStartSteps}</h2>
+          <ol class="mt-3 space-y-2">
+            {data.zeroToStartSteps.map((step, index) => (
+              <li class="flex items-start gap-3 text-muted">
+                <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-ink text-xs font-semibold text-white">
+                  {index + 1}
+                </span>
+                <span class="mt-0.5">{step}</span>
+              </li>
+            ))}
+          </ol>
+        </section>
+      )}
+
+      {data.firstWeekPlan.length > 0 && (
+        <section>
+          <h2 class="font-display text-xl font-bold">{ui.method.sections.firstWeekPlan}</h2>
+          <div class="mt-3 space-y-3">
+            {data.firstWeekPlan.map((item) => (
+              <div class="flex flex-col gap-1 rounded-xl border border-border bg-card p-4 sm:flex-row sm:items-baseline sm:gap-4">
+                <span class="shrink-0 font-display text-sm font-semibold text-accent-dark sm:w-28">{item.period}</span>
+                <span class="text-sm text-muted">{item.task}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <section>
+        <h2 class="font-display text-xl font-bold">{ui.method.sections.firstClient}</h2>
+        <p class="mt-3 text-muted">{data.firstClientTip}</p>
+      </section>
+
+      {data.platforms.length > 0 && (
+        <section>
+          <h2 class="font-display text-xl font-bold">{ui.method.sections.platforms}</h2>
+          <div class="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
+            {data.platforms.map((platform) => (
+              <a
+                href={platform.url}
+                target="_blank"
+                rel="noopener"
+                class="flex flex-col gap-1 rounded-xl border border-border bg-card p-4 transition hover:border-accent-dark"
+              >
+                <span class="flex items-center gap-2 font-semibold">
+                  {platform.name}
+                  {platform.hasAffiliateProgram && (
+                    <span class="rounded-full bg-bg px-2 py-0.5 text-xs font-normal text-muted">
+                      {ui.method.affiliateProgram}
+                    </span>
+                  )}
+                </span>
+                {(platform.regions || platform.pricingNote) && (
+                  <span class="flex flex-wrap gap-2 text-xs text-muted">
+                    {platform.regions && <span>{platform.regions}</span>}
+                    {platform.regions && platform.pricingNote && <span aria-hidden="true">·</span>}
+                    {platform.pricingNote && <span>{platform.pricingNote}</span>}
+                  </span>
+                )}
+                {platform.note && <span class="text-sm text-muted">{platform.note}</span>}
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {data.tools.length > 0 && (
+        <section>
+          <h2 class="font-display text-xl font-bold">{ui.method.sections.tools}</h2>
+          <div class="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
+            {data.tools.map((tool) => (
+              <AffiliateLink toolId={tool.toolId} note={tool.note} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      <section class="rounded-2xl border border-border bg-card p-6">
+        <h2 class="font-display text-xl font-bold">{ui.method.sections.incomePotential}</h2>
+        <p class="mt-2 font-display text-2xl font-bold text-accent-dark">
+          {formatIncomeRange(data.incomePotential.min, data.incomePotential.max, data.incomePotential.period)}
+        </p>
+        <p class="mt-3 text-sm text-muted">{data.incomePotential.note}</p>
+      </section>
+
+      {data.commonMistakes.length > 0 && (
+        <section>
+          <h2 class="font-display text-xl font-bold">{ui.method.sections.commonMistakes}</h2>
+          <ul class="mt-3 space-y-2">
+            {data.commonMistakes.map((mistake) => (
+              <li class="flex items-start gap-2 text-muted">
+                <span class="mt-0.5 text-red-500" aria-hidden="true">✕</span>
+                {mistake}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {data.watchOutFor.length > 0 && (
+        <section class="rounded-2xl border border-amber-200 bg-amber-50 p-6">
+          <h2 class="font-display text-xl font-bold">{ui.method.sections.watchOutFor}</h2>
+          <ul class="mt-3 space-y-2">
+            {data.watchOutFor.map((point) => (
+              <li class="flex items-start gap-2 text-amber-900">
+                <span class="mt-0.5" aria-hidden="true">⚠</span>
+                {point}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <section class="border-t border-border pt-8 text-muted">
+        <Content />
+      </section>
+    </div>
+
+    {(relatedMethods.length > 0 || relatedLessons.length > 0) && (
+      <div class="mt-16 border-t border-border pt-10">
+        {relatedMethods.length > 0 && (
+          <div>
+            <h2 class="font-display text-xl font-bold">Další možnosti v této kategorii</h2>
+            <div class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
+              {relatedMethods.map((related) => (
+                <MethodCard method={related} />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {relatedLessons.length > 0 && (
+          <div class="mt-10">
+            <h2 class="font-display text-xl font-bold">Související lekce v Academy</h2>
+            <ul class="mt-5 space-y-3">
+              {relatedLessons.map((lesson) => (
+                <li>
+                  <a href={`/academy/${lesson.data.slug}`} class="font-medium text-accent-dark hover:underline">
+                    {lesson.data.title} →
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    )}
+  </article>
+</BaseLayout>

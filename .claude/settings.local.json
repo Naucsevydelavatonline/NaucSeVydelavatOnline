@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(npx astro check 2>&1)",
+      "PowerShell(npm install -D playwright@latest 2>&1)"
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "nauc-se-vydelavat-online",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Nauč se vydělávat online – praktický český vzdělávací web o reálném vydělávání peněz na internetu.",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^8.0.0",
+    "@astrojs/sitemap": "^3.7.4",
+    "@tailwindcss/vite": "^4.3.3",
+    "alpinejs": "^3.17.1",
+    "astro": "^7.2.10",
+    "tailwindcss": "^4.3.3",
+    "zod": "^4.5.4"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@types/alpinejs": "^3.13.11",
+    "typescript": "^5.9.3"
+  }
+}

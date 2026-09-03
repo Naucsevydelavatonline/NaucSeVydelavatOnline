@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FilterBar from '../components/FilterBar.astro';
+import MethodCard from '../components/MethodCard.astro';
+import { ui } from '../i18n/cs';
+import { getCategories, getMethods } from '../lib/content';
+
+const categories = await getCategories();
+const methods = await getMethods();
+
+const categoryLabels = new Map<string, string>();
+for (const category of categories) {
+  categoryLabels.set(category.data.id, `${category.data.emoji} ${category.data.title}`);
+}
+---
+
+<BaseLayout
+  title={ui.nav.cta}
+  description="Vyber si podle rozpočtu, obtížnosti a toho, co máš k dispozici. Najdi si možnost vydělávání, která reálně sedí na tvoji situaci."
+>
+  <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h1 class="font-display text-4xl font-bold sm:text-5xl">{ui.hero.ctaPrimary}</h1>
+      <p class="mx-auto mt-3 max-w-xl text-muted">{ui.filter.subtitle}</p>
+    </div>
+
+    <div class="mt-10">
+      <FilterBar categories={categories}>
+        {methods.map((method) => (
+          <MethodCard method={method} categoryLabel={categoryLabels.get(method.data.category)} />
+        ))}
+      </FilterBar>
+    </div>
+  </section>
+</BaseLayout>

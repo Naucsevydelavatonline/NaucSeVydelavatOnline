@@ -1,0 +1,183 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import CategoryCard from '../components/CategoryCard.astro';
+import MethodCard from '../components/MethodCard.astro';
+import MobileOnlyBadge from '../components/MobileOnlyBadge.astro';
+import CommunityCta from '../components/CommunityCta.astro';
+import { ui } from '../i18n/cs';
+import {
+  getCategories,
+  getMethods,
+  getFeaturedMethods,
+  getMobileOnlyMethods,
+  getAcademyLessons,
+  getScamAlerts,
+  methodBelongsToCategory,
+} from '../lib/content';
+
+const categories = await getCategories();
+const methods = await getMethods();
+const featuredAiMethods = (await getFeaturedMethods(8)).filter((m) => methodBelongsToCategory(m, 'ai')).slice(0, 3);
+const mobileOnlyMethods = (await getMobileOnlyMethods()).slice(0, 3);
+const allAcademyLessons = await getAcademyLessons();
+const academyLessons = allAcademyLessons.slice(0, 3);
+const scamAlerts = (await getScamAlerts()).slice(0, 3);
+
+const categoryCounts = new Map<string, number>();
+for (const method of methods) {
+  // Počítáme primární i vedlejší kategorie, ať štítek na kartě odpovídá
+  // tomu, kolik možností se v dané kategorii skutečně zobrazí.
+  for (const categoryId of [method.data.category, ...method.data.secondaryCategories]) {
+    categoryCounts.set(categoryId, (categoryCounts.get(categoryId) ?? 0) + 1);
+  }
+}
+categoryCounts.set('academy', allAcademyLessons.length);
+categoryCounts.set('scam-alert', (await getScamAlerts()).length);
+---
+
+<BaseLayout
+  title={ui.siteName}
+  description="Praktický český vzdělávací web o tom, jak realisticky vydělávat peníze na internetu. Žádné sliby zbohatnutí – konkrétní možnosti, reálná čísla, návody krok za krokem."
+>
+  <Hero />
+
+  <!-- Najdi si cestu / kategorie -->
+  <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h2 class="font-display text-3xl font-bold sm:text-4xl">{ui.filter.title}</h2>
+      <p class="mx-auto mt-3 max-w-xl text-muted">{ui.filter.subtitle}</p>
+    </div>
+    <div class="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {categories.map((category) => (
+        <CategoryCard category={category} count={categoryCounts.get(category.data.id) ?? 0} />
+      ))}
+    </div>
+    <div class="mt-8 text-center">
+      <a
+        href="/jak-chces-vydelavat"
+        class="inline-flex rounded-full bg-ink px-6 py-3 font-display text-sm font-semibold text-white transition hover:bg-accent-dark hover:text-accent-ink"
+      >
+        {ui.nav.cta}
+      </a>
+    </div>
+  </section>
+
+  <!-- AI sekce – nejdůležitější -->
+  <section class="border-y border-border bg-ai-light">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <div class="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
+        <div>
+          <span class="rounded-full bg-ai px-3 py-1 text-xs font-semibold text-ai-ink">Nejdůležitější kategorie</span>
+          <h2 class="mt-3 font-display text-3xl font-bold sm:text-4xl">{ui.ai.title}</h2>
+          <p class="mt-2 max-w-xl text-muted">{ui.ai.subtitle}</p>
+        </div>
+        <a href="/kategorie/ai" class="whitespace-nowrap font-display text-sm font-semibold text-violet-700 hover:underline">
+          {ui.ai.exploreCta} →
+        </a>
+      </div>
+
+      <div class="mt-8 flex flex-wrap gap-2">
+        {['AI video', 'Shorts/TikTok', 'AI voiceover', 'AI dabing', 'AI avatary', 'AI UGC', 'AI obrázky', 'AI design', 'AI copywriting', 'AI automatizace', 'AI agenti', 'AI agentury'].map((chip) => (
+          <span class="rounded-full border border-violet-200 bg-white px-3 py-1.5 text-xs font-medium text-violet-700">{chip}</span>
+        ))}
+      </div>
+
+      <div class="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {featuredAiMethods.map((method) => (
+          <MethodCard method={method} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Mám jen mobil -->
+  <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
+      <div>
+        <MobileOnlyBadge />
+        <h2 class="mt-3 font-display text-3xl font-bold sm:text-4xl">{ui.mobileOnly.title}</h2>
+        <p class="mt-2 max-w-xl text-muted">{ui.mobileOnly.subtitle}</p>
+      </div>
+      <a href="/mam-jen-mobil" class="whitespace-nowrap font-display text-sm font-semibold text-accent-dark hover:underline">
+        {ui.mobileOnly.cta} →
+      </a>
+    </div>
+    <div class="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {mobileOnlyMethods.map((method) => (
+        <MethodCard method={method} />
+      ))}
+    </div>
+  </section>
+
+  <!-- Academy teaser -->
+  <section class="border-y border-border bg-card">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <div class="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
+        <div>
+          <h2 class="font-display text-3xl font-bold sm:text-4xl">{ui.academy.title}</h2>
+          <p class="mt-2 max-w-xl text-muted">{ui.academy.subtitle}</p>
+        </div>
+        <a href="/academy" class="whitespace-nowrap font-display text-sm font-semibold text-accent-dark hover:underline">
+          {ui.academy.cta} →
+        </a>
+      </div>
+      <ul class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+        {academyLessons.map((lesson) => (
+          <li>
+            <a href={`/academy/${lesson.data.slug}`} class="block h-full rounded-2xl border border-border bg-bg p-5 transition hover:border-accent-dark">
+              <span class="text-xs font-semibold uppercase tracking-wide text-muted">
+                {ui.academy.levels[lesson.data.level]}
+              </span>
+              <p class="mt-2 font-display font-semibold">{lesson.data.title}</p>
+              <p class="mt-1 text-sm text-muted">{lesson.data.shortDescription}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Scam Alert teaser -->
+  <section class="border-y border-red-100 bg-red-50">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <div class="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
+        <div>
+          <h2 class="font-display text-3xl font-bold text-red-700 sm:text-4xl">{ui.scamAlert.title}</h2>
+          <p class="mt-2 max-w-xl text-red-900/80">{ui.scamAlert.subtitle}</p>
+        </div>
+        <a href="/scam-alert" class="whitespace-nowrap font-display text-sm font-semibold text-red-700 hover:underline">
+          {ui.scamAlert.cta} →
+        </a>
+      </div>
+      <ul class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+        {scamAlerts.map((alert) => (
+          <li>
+            <a href={`/scam-alert/${alert.data.slug}`} class="block h-full rounded-2xl border border-red-200 bg-white p-5 transition hover:border-red-400">
+              <span class="rounded-full bg-red-100 px-2 py-0.5 text-xs font-semibold text-red-700">
+                {alert.data.scamType}
+              </span>
+              <p class="mt-2 font-display font-semibold">{alert.data.title}</p>
+              <p class="mt-1 text-sm text-muted">{alert.data.shortDescription}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Brand principy -->
+  <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <h2 class="text-center font-display text-3xl font-bold sm:text-4xl">{ui.principles.title}</h2>
+    <div class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
+      {ui.principles.items.map((item) => (
+        <div class="rounded-2xl border border-border bg-card p-6 text-center">
+          <p class="font-display text-lg font-semibold text-accent-dark">{item.title}</p>
+          <p class="mt-2 text-sm text-muted">{item.text}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <CommunityCta />
+</BaseLayout>

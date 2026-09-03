@@ -1,0 +1,48 @@
+@import 'tailwindcss';
+
+/*
+ * Design tokeny značky "Nauč se vydělávat online".
+ * Světlý základ, jedna výrazná akcentní barva (lime – asociace s penězi
+ * a růstem) a druhá, jen pro AI sekci (violet – aby AI vizuálně vyčnívala
+ * jako nejdůležitější kategorie).
+ */
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #101014;
+  --color-bg: #fafaf7;
+  --color-card: #ffffff;
+  --color-border: #e7e7e2;
+  --color-muted: #63636c;
+
+  --color-accent: #c6ff3d;
+  --color-accent-ink: #101014;
+  --color-accent-dark: #9fd91f;
+
+  --color-ai: #7c5cfc;
+  --color-ai-light: #efeaff;
+  --color-ai-ink: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+}
+
+/* Alpine: skryj prvky s x-cloak, dokud se Alpine nenačte */
+[x-cloak] {
+  display: none !important;
+}

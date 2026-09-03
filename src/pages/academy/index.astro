@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ui } from '../../i18n/cs';
+import { getAcademyLessons } from '../../lib/content';
+
+const lessons = await getAcademyLessons();
+const beginnerLessons = lessons.filter((l) => l.data.level === 'zacatecnik');
+const advancedLessons = lessons.filter((l) => l.data.level === 'pokrocily');
+---
+
+<BaseLayout
+  title={ui.academy.title}
+  description="Strukturované lekce, které tě provedou od nuly k první koruně – zdarma i placeně, bez zbytečné teorie navíc."
+>
+  <section class="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h1 class="font-display text-4xl font-bold sm:text-5xl">{ui.academy.title}</h1>
+      <p class="mx-auto mt-3 max-w-xl text-muted">{ui.academy.subtitle}</p>
+    </div>
+
+    {beginnerLessons.length > 0 && (
+      <div class="mt-12">
+        <h2 class="font-display text-xl font-bold">{ui.academy.levels.zacatecnik}</h2>
+        <ul class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
+          {beginnerLessons.map((lesson) => (
+            <li>
+              <a href={`/academy/${lesson.data.slug}`} class="block h-full rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-0.5 hover:border-accent-dark hover:shadow-md">
+                <p class="font-display text-lg font-semibold">{lesson.data.title}</p>
+                <p class="mt-2 text-sm text-muted">{lesson.data.shortDescription}</p>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    {advancedLessons.length > 0 && (
+      <div class="mt-12">
+        <h2 class="font-display text-xl font-bold">{ui.academy.levels.pokrocily}</h2>
+        <ul class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
+          {advancedLessons.map((lesson) => (
+            <li>
+              <a href={`/academy/${lesson.data.slug}`} class="block h-full rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-0.5 hover:border-accent-dark hover:shadow-md">
+                <p class="font-display text-lg font-semibold">{lesson.data.title}</p>
+                <p class="mt-2 text-sm text-muted">{lesson.data.shortDescription}</p>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    <div class="mt-16 rounded-2xl border border-border bg-card p-6 text-center sm:p-8">
+      <p class="font-display text-lg font-bold sm:text-xl">{ui.storyCta.title}</p>
+      <p class="mx-auto mt-2 max-w-lg text-sm text-muted">{ui.storyCta.text}</p>
+      <a
+        href="/o-projektu#pribeh"
+        class="mt-5 inline-flex rounded-full bg-ink px-6 py-3 font-display text-sm font-semibold text-white transition hover:bg-accent-dark hover:text-accent-ink"
+      >
+        {ui.storyCta.cta}
+      </a>
+    </div>
+  </section>
+</BaseLayout>
