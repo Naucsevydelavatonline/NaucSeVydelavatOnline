@@ -23,7 +23,13 @@ const scamAlerts = isScamAlert ? await getScamAlerts() : [];
 const { Content: CategoryIntro } = await render(category);
 ---
 
-<BaseLayout title={`${category.data.emoji} ${category.data.title}`} description={category.data.shortDescription}>
+<BaseLayout
+  title={category.data.seoTitle ?? `${category.data.emoji} ${category.data.title}`}
+  description={category.data.seoDescription ?? category.data.shortDescription}
+  ogImage={category.data.ogImage}
+  ogImageAlt={category.data.ogImageAlt}
+  categoryId={category.data.id}
+>
   <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
     <div class="text-center">
       <h1 class:list={["font-display text-4xl font-bold sm:text-5xl", { "text-red-700": isScamAlert }]}>

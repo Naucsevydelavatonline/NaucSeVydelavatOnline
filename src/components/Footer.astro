@@ -1,6 +1,7 @@
 ---
 import { ui } from '../i18n/cs';
 import { getCategories } from '../lib/content';
+import { SITE_EMAIL } from '../lib/seo';
 
 const categories = await getCategories();
 const year = new Date().getFullYear();
@@ -77,6 +78,10 @@ const year = new Date().getFullYear();
       <p>
         Tento web obsahuje partnerské (affiliate) odkazy – více v sekci
         <a href="/pravni/affiliate-disclosure" class="underline hover:text-ink">{ui.footer.affiliateDisclosure}</a>.
+      </p>
+      <p class="mt-2">
+        {ui.footer.contact}{' '}
+        <a href={`mailto:${SITE_EMAIL}`} class="underline hover:text-ink">{SITE_EMAIL}</a>
       </p>
       <p class="mt-2">&copy; {year} {ui.siteName}. {ui.footer.rights}</p>
     </div>

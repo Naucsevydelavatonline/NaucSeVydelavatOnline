@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nauc-se-vydelavat-online.cz/sitemap-index.xml
+Sitemap: https://naucsevydelavatonline.cz/sitemap-index.xml

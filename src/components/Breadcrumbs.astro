@@ -1,0 +1,34 @@
+---
+// Reusable drobečková navigace – vizuální i strukturovaná (BreadcrumbList
+// JSON-LD). Použití: tutorialy, Academy detaily, Scam Alert detaily (viz
+// zadání). Poslední položka = aktuální stránka, nikdy není odkaz, jen
+// `aria-current="page"` text.
+//
+// `items` je kompletní cesta VČETNĚ domovské stránky a aktuální stránky,
+// např. [{name: 'Domů', url: '/'}, {name: '🤖 Vydělávání s AI', url: '/kategorie/ai'}, {name: 'AI voiceover a dabing', url: '/moznosti/ai-voiceover-a-dabing'}].
+import { breadcrumbListJsonLd } from '../lib/seo';
+
+interface Props {
+  items: { name: string; url: string }[];
+}
+
+const { items } = Astro.props;
+const jsonLd = breadcrumbListJsonLd(items.map((item) => ({ name: item.name, url: new URL(item.url, Astro.site).toString() })));
+---
+
+<nav aria-label="Drobečková navigace" class="text-sm text-muted">
+  <ol class="flex flex-wrap items-center gap-x-1.5 gap-y-1">
+    {items.map((item, index) => (
+      <li class="flex items-center gap-1.5">
+        {index > 0 && <span aria-hidden="true" class="text-border">/</span>}
+        {index === items.length - 1 ? (
+          <span aria-current="page" class="text-ink">{item.name}</span>
+        ) : (
+          <a href={item.url} class="hover:text-ink">{item.name}</a>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />

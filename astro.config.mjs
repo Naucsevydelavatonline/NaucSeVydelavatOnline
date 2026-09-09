@@ -7,7 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 // Až přibude angličtina, stačí doplnit locale do pole `locales` a založit
 // zrcadlenou strukturu stránek pod `src/pages/en/` – čeština se nezmění.
 export default defineConfig({
-  site: 'https://nauc-se-vydelavat-online.cz',
+  site: 'https://naucsevydelavatonline.cz',
   trailingSlash: 'never',
   i18n: {
     defaultLocale: 'cs',

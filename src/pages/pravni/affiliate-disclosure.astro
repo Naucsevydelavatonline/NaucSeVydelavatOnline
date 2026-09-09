@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { ui } from '../../i18n/cs';
+import { SITE_EMAIL } from '../../lib/seo';
 ---
 
 <BaseLayout
@@ -28,6 +29,10 @@ import { ui } from '../../i18n/cs';
       <p>
         Pokud pro nějaký zmíněný nástroj partnerství (zatím) nemáme, odkazujeme přímo na jeho
         oficiální web bez provize.
+      </p>
+      <p>
+        Máš dotaz k affiliate odkazům nebo partnerství s námi? Napiš na{' '}
+        <a href={`mailto:${SITE_EMAIL}`} class="font-medium text-accent-dark hover:underline">{SITE_EMAIL}</a>.
       </p>
     </div>
   </article>

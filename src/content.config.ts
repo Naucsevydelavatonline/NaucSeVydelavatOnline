@@ -12,6 +12,27 @@ const startupCostEnum = z.enum(['zdarma', 'do-500', 'do-5000', '5000-plus']);
 
 const timeToStartEnum = z.enum(['ihned', 'dny', 'tydny', 'mesice']);
 
+// Sjednocená SEO/social-preview pole – stejný tvar napříč všemi kolekcemi
+// (categories, methods, academy, scamAlerts), viz src/lib/seo.ts, který je
+// čte a skládá z nich <title>/description/OG/Twitter/JSON-LD. Všechna pole
+// jsou volitelná, aby nešlo rozbít existující obsah, který je nemá vyplněné
+// – v tom případě se uplatní fallback řetězec v `resolveSeo()`.
+//   - seoTitle/seoDescription: přepíšou běžný title/shortDescription jen
+//     pro <title>/meta description (obsah stránky se nemění).
+//   - ogImage: cesta k obrázku (typicky pod /og/..., viz public/), NE
+//     Astro `image()` helper – schválně, ať referencování neexistujícího
+//     souboru nikdy nerozbije build (public/ assety se při buildu
+//     neověřují). Dokud není vyplněné, použije se obrázek kategorie a
+//     nakonec globální default (src/lib/seo.ts).
+//   - ogImageAlt: alt text k ogImage; bez vyplnění se použije obecný alt
+//     dané kategorie/webu.
+const seoFields = {
+  seoTitle: z.string().optional(),
+  seoDescription: z.string().optional(),
+  ogImage: z.string().optional(),
+  ogImageAlt: z.string().optional(),
+};
+
 // `categories` – 8 hlavních kategorií -------------------------------------
 
 const categories = defineCollection({
@@ -25,6 +46,7 @@ const categories = defineCollection({
     // Tailwind barevný token pro akcent kategorie, např. "violet"
     accentColor: z.string(),
     order: z.number(),
+    ...seoFields,
   }),
 });
 
@@ -142,8 +164,7 @@ const methods = defineCollection({
       // SEO
       publishedDate: z.coerce.date(),
       updatedDate: z.coerce.date().optional(),
-      seoTitle: z.string().optional(),
-      seoDescription: z.string().optional(),
+      ...seoFields,
     }),
 });
 
@@ -164,6 +185,7 @@ const academy = defineCollection({
     isPremium: z.boolean().default(false),
     publishedDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
+    ...seoFields,
   }),
 });
 
@@ -210,6 +232,7 @@ const scamAlerts = defineCollection({
     caseStudyNote: z.string().optional(),
     publishedDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
+    ...seoFields,
   }),
 });
 
