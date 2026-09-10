@@ -62,6 +62,9 @@ const allJsonLd = [organizationJsonLd(Astro.site!), websiteJsonLd(Astro.site!), 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Ověření vlastnictví webu pro Impact (affiliate program DistroKid) -->
+    <Fragment set:html="<meta name='impact-site-verification' value='c3dff213-8dd8-4277-a795-fafefa42609d'>" />
+
     <!--
       Favicon: SVG je hlavní zdroj pravdy (funguje ve všech aktuálních
       prohlížečích). PNG (32×32) a apple-touch-icon (180×180) jsou fallback
