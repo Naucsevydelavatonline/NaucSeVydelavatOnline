@@ -1,0 +1,180 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ui } from '../../i18n/cs';
+import { SITE_EMAIL } from '../../lib/seo';
+
+const lastUpdated = '12. září 2026';
+---
+
+<BaseLayout
+  title={ui.footer.termsOfUse}
+  description="Podmínky používání webu Nauč se vydělávat online – vzdělávací a informační obsah, žádné garantované výsledky a jak přistupujeme k odpovědnosti a affiliate odkazům."
+>
+  <article class="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
+    <h1 class="font-display text-4xl font-bold sm:text-5xl">{ui.footer.termsOfUse}</h1>
+    <p class="mt-3 text-muted">Naposledy aktualizováno: {lastUpdated}</p>
+
+    <div class="mt-10 space-y-10 text-muted">
+      <section>
+        <h2 class="font-display text-xl font-bold text-ink">1. Úvod a působnost podmínek</h2>
+        <p class="mt-3">
+          Tyto podmínky používání ("podmínky") upravují používání webu{' '}
+          <strong class="text-ink">Nauč se vydělávat online</strong>, dostupného na adrese{' '}
+          <a href="https://naucsevydelavatonline.cz" class="font-medium text-accent-dark hover:underline">
+            naucsevydelavatonline.cz
+          </a>{' '}
+          (dále jen "web"). Používáním webu s těmito podmínkami souhlasíš. Pokud s nimi
+          nesouhlasíš, web prosím nepoužívej.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-xl font-bold text-ink">2. Charakter webu a poskytovaného obsahu</h2>
+        <p class="mt-3">
+          Web je český vzdělávací a informační projekt zaměřený na praktické možnosti
+          vydělávání online – AI nástroje, tvorbu obsahu, freelancing, e-commerce, sociální
+          sítě, online podnikání, finance a investování, gaming a streaming, sekci Academy a
+          Scam Alert. Web aktuálně nenabízí žádný e-shop, placenou službu ani předplatné –
+          nekupuješ si tu žádný produkt.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-xl font-bold text-ink">3. Vzdělávací a informační charakter obsahu</h2>
+        <p class="mt-3">
+          Veškerý obsah webu (návody, přehledy možností vydělávání, lekce Academy,
+          upozornění ve Scam Alert i jakýkoliv další text) má výhradně{' '}
+          <strong class="text-ink">vzdělávací a informační charakter</strong>. Popisuje obecné
+          principy a možné postupy – není to konkrétní návod šitý na míru tvé situaci.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-xl font-bold text-ink">4. Žádné garantované výsledky ani výdělky</h2>
+        <p class="mt-3">
+          Nikde na webu neslibujeme ani negarantujeme konkrétní výdělek, rychlost výsledků
+          ani úspěch jakékoliv popsané možnosti vydělávání. Uváděné rozsahy příjmu jsou
+          orientační odhady, ne příslib – reálný výsledek závisí na spoustě faktorů mimo naši
+          kontrolu (tvůj trh, konkurence, čas, který tomu věnuješ, a mnoho dalších).
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-xl font-bold text-ink">5. Odpovědnost za vlastní rozhodnutí</h2>
+        <p class="mt-3">
+          Veškerá rozhodnutí, která na základě obsahu webu uděláš (např. založení podnikání,
+          výběr nástroje, oslovení klienta, investice do reklamy či nástroje), děláš na{' '}
+          <strong class="text-ink">vlastní odpovědnost</strong>. Doporučujeme si informace
+          před jednáním vždy ověřit a přizpůsobit vlastní situaci.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-xl font-bold text-ink">6. Finance, investice, daně a právo nejsou individuální poradenství</h2>
+        <p class="mt-3">
+          Informace týkající se financí, investování, daní, živnosti nebo práva (typicky
+          v kategorii Finance a v Academy lekci o daních) mají čistě obecný, vzdělávací
+          charakter. <strong class="text-ink">Nejsou to individuální finanční, investiční,
+          daňové ani právní poradenství</strong> a nenahrazují konzultaci s kvalifikovaným
+          odborníkem (účetním, daňovým poradcem, advokátem, finančním poradcem), který zná
+          tvou konkrétní situaci.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-xl font-bold text-ink">7. Informace se mohou časem změnit nebo zastarat</h2>
+        <p class="mt-3">
+          Nástroje, ceny, podmínky affiliate programů, daňová pravidla i platformy, o kterých
+          na webu píšeme, se v čase mění. Snažíme se obsah udržovat aktuální, ale
+          negarantujeme, že je vždy 100% přesný a aktuální v okamžiku, kdy si ho čteš – u
+          konkrétních čísel, sazeb, cen a podmínek si vždy ověř aktuální stav u zdroje.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-xl font-bold text-ink">8. Odkazy na služby a weby třetích stran</h2>
+        <p class="mt-3">
+          Web obsahuje odkazy na externí nástroje, platformy a služby třetích stran. Nad
+          jejich obsahem, dostupností, funkčností ani podmínkami nemáme kontrolu a
+          neodpovídáme za ně. Než si u takové služby něco pořídíš nebo založíš účet, projdi
+          si její vlastní podmínky a zásady.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-xl font-bold text-ink">9. Affiliate odkazy</h2>
+        <p class="mt-3">
+          Některé odkazy na nástroje a služby na webu jsou partnerské (affiliate) odkazy –
+          když si přes ně něco pořídíš, můžeme dostat provizi, tebe to nic navíc nestojí.
+          Podrobné vysvětlení, jak affiliate odkazy označujeme a jak k nim přistupujeme,
+          najdeš na stránce{' '}
+          <a href="/pravni/affiliate-disclosure" class="font-medium text-accent-dark hover:underline">
+            {ui.footer.affiliateDisclosure}
+          </a>.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-xl font-bold text-ink">10. Duševní vlastnictví a používání našeho obsahu</h2>
+        <p class="mt-3">
+          Texty, struktura a grafické zpracování webu jsou naším obsahem. Můžeš ho číst,
+          sdílet odkazem a citovat s uvedením zdroje. Nekopíruj ani nepublikuj obsah webu
+          (celé články, návody nebo jejich podstatné části) jako vlastní jinde bez souhlasu.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-xl font-bold text-ink">11. Omezení odpovědnosti</h2>
+        <p class="mt-3">
+          Web a jeho obsah poskytujeme "tak, jak je", bez záruky bezchybnosti či nepřetržité
+          dostupnosti. V rozsahu, který dovoluje zákon, neneseme odpovědnost za škodu nebo
+          ušlý zisk vzniklý v souvislosti s používáním webu nebo spoléháním na jeho obsah –
+          s výjimkou případů, kdy odpovědnost nelze podle zákona omezit ani vyloučit.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-xl font-bold text-ink">12. Zakázané zneužívání webu</h2>
+        <p class="mt-3">Web nepoužívej způsobem, který by:</p>
+        <ul class="mt-3 space-y-2">
+          <li class="flex items-start gap-2">
+            <span class="mt-0.5 text-red-500" aria-hidden="true">✕</span>
+            narušoval jeho provoz nebo bezpečnost (např. pokusy o neoprávněný přístup, šíření
+            škodlivého kódu);
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="mt-0.5 text-red-500" aria-hidden="true">✕</span>
+            porušoval platné právní předpisy nebo práva třetích osob;
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="mt-0.5 text-red-500" aria-hidden="true">✕</span>
+            zahrnoval automatizované hromadné stahování nebo kopírování obsahu webu bez
+            souhlasu.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="font-display text-xl font-bold text-ink">13. Změny těchto podmínek</h2>
+        <p class="mt-3">
+          Podmínky můžeme čas od času upravit, například kvůli změně obsahu nebo fungování
+          webu. Aktuální verze je vždy dostupná na této stránce spolu s datem poslední
+          aktualizace níže.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-xl font-bold text-ink">14. Kontakt</h2>
+        <p class="mt-3">
+          Dotaz k těmto podmínkám nebo k webu obecně? Napiš na{' '}
+          <a href={`mailto:${SITE_EMAIL}`} class="font-medium text-accent-dark hover:underline">{SITE_EMAIL}</a>.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-xl font-bold text-ink">15. Datum poslední aktualizace</h2>
+        <p class="mt-3">Tyto podmínky byly naposledy aktualizovány {lastUpdated}.</p>
+      </section>
+    </div>
+  </article>
+</BaseLayout>

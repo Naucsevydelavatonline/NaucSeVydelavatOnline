@@ -189,6 +189,7 @@ export const ui = {
     about: 'Praktický český vzdělávací web o tom, jak realisticky vydělávat peníze na internetu.',
     legal: 'Právní',
     affiliateDisclosure: 'Affiliate odkazy',
+    termsOfUse: 'Podmínky používání',
     rights: 'Všechna práva vyhrazena.',
     contact: 'Kontakt:',
   },
