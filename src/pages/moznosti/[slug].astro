@@ -7,6 +7,7 @@ import AffiliateLink from '../../components/AffiliateLink.astro';
 import MethodCard from '../../components/MethodCard.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { ui } from '../../i18n/cs';
+import { getAffiliateTool } from '../../data/affiliate-links';
 import {
   getMethods,
   getCategoryById,
@@ -39,6 +40,34 @@ const relatedMethods = (await getMethodsByCategory(data.category))
 const relatedLessons = await getRelatedAcademyLessons(data.slug);
 const coreTools = data.tools.filter((t) => t.role === 'core');
 const alternativeTools = data.tools.filter((t) => t.role === 'alternative');
+
+// Odkazy v "Kde a jak začít" (data.platforms) se dřív vždy renderovaly na
+// napevno zapsané `platform.url`, bez ohledu na `platform.toolId` – když
+// nástroj v centrálním registru (affiliate-links.ts) přešel na živý
+// affiliate/referral odkaz, tahle sekce o tom nevěděla a dál ukazovala
+// starou/neafiliovanou URL bez jakéhokoliv disclosure textu (na rozdíl od
+// AffiliateLink.astro, které přesně tohle řeší v sekci "Nástroje"). Stejnou
+// logiku proto sjednocujeme i tady: pokud má `platform.toolId` v registru
+// aktivní affiliate/referral odkaz, použije se ten (+ rel="sponsored" +
+// "(affiliate/referral odkaz)" popisek). Jinak se nic nemění – platí
+// přesně původní chování (`platform.url`, `rel="noopener"`, obecný
+// odznak "má affiliate program", pokud je nastavený).
+function resolvePlatformLink(platform: { url: string; toolId?: string; hasAffiliateProgram: boolean }) {
+  const tool = platform.toolId ? getAffiliateTool(platform.toolId) : undefined;
+  const isLiveAffiliate = Boolean(tool && tool.affiliateStatus === 'active' && tool.affiliateUrl);
+  const disclosure = isLiveAffiliate
+    ? tool!.affiliateType === 'referral'
+      ? ui.method.referralNote
+      : tool!.affiliateType === 'affiliate'
+        ? ui.method.affiliateNote
+        : null
+    : null;
+  return {
+    href: isLiveAffiliate ? tool!.affiliateUrl! : platform.url,
+    rel: isLiveAffiliate ? 'sponsored nofollow noopener' : 'noopener',
+    disclosure,
+  };
+}
 
 const jsonLd = articleJsonLd({
   headline: data.title,
@@ -189,19 +218,25 @@ const breadcrumbItems = [
         <section>
           <h2 class="font-display text-xl font-bold">{ui.method.sections.platforms}</h2>
           <div class="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
-            {data.platforms.map((platform) => (
+            {data.platforms.map((platform) => {
+              const link = resolvePlatformLink(platform);
+              return (
               <a
-                href={platform.url}
+                href={link.href}
                 target="_blank"
-                rel="noopener"
+                rel={link.rel}
                 class="flex flex-col gap-1 rounded-xl border border-border bg-card p-4 transition hover:border-accent-dark"
               >
                 <span class="flex items-center gap-2 font-semibold">
                   {platform.name}
-                  {platform.hasAffiliateProgram && (
-                    <span class="rounded-full bg-bg px-2 py-0.5 text-xs font-normal text-muted">
-                      {ui.method.affiliateProgram}
-                    </span>
+                  {link.disclosure ? (
+                    <span class="text-xs font-normal text-muted">({link.disclosure})</span>
+                  ) : (
+                    platform.hasAffiliateProgram && (
+                      <span class="rounded-full bg-bg px-2 py-0.5 text-xs font-normal text-muted">
+                        {ui.method.affiliateProgram}
+                      </span>
+                    )
                   )}
                 </span>
                 {(platform.regions || platform.pricingNote) && (
@@ -213,7 +248,8 @@ const breadcrumbItems = [
                 )}
                 {platform.note && <span class="text-sm text-muted">{platform.note}</span>}
               </a>
-            ))}
+              );
+            })}
           </div>
         </section>
       )}

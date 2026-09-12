@@ -31,7 +31,7 @@ tools:
   - toolId: suno
     note: Generování písní a instrumentální hudby z promptu.
   - toolId: distrokid
-    note: Distribuce hotových skladeb na streamovací platformy.
+    note: Distribuce hotových skladeb na streamovací platformy – 7 % sleva přes náš odkaz.
 incomePotential:
   min: 0
   max: 10000
@@ -56,11 +56,12 @@ platforms:
     pricingNote: zdarma tarif + placené plány
     hasAffiliateProgram: true
   - name: DistroKid
-    url: https://distrokid.com/
+    url: https://distrokid.com/vip/seven/3232386
     toolId: distrokid
     regions: celosvětově
-    pricingNote: roční poplatek za distribuci
+    pricingNote: roční poplatek za distribuci, 7 % sleva přes náš odkaz
     hasAffiliateProgram: true
+    note: Registrace přes náš referral odkaz.
 zeroToStartSteps:
   - Vyber si žánr/styl, na který se zaměříš.
   - Vygeneruj 10-15 skladeb a vyber ty nejkvalitnější.

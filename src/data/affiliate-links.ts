@@ -181,11 +181,17 @@ export const affiliateTools: Record<string, AffiliateTool> = {
     description: 'Distribuce hudby na Spotify, Apple Music a další streamovací služby.',
     category: 'Distribuce hudby',
     useCases: ['Nahrání vlastní/AI hudby na streamovací platformy'],
-    pricingInfo: 'Roční paušální poplatek za distribuci (ne provize z každého přehrání).',
+    pricingInfo: 'Roční paušální poplatek za distribuci (ne provize z každého přehrání). Přes náš odkaz získáš 7% slevu.',
     freePlan: false,
     mobileFriendly: true,
-    affiliateType: 'affiliate',
-    affiliateStatus: 'pending',
+    // Jde o DistroKid VIP/referral odkaz (jejich vlastní program "doporuč
+    // kamaráda"), NE o formální přijetí do affiliate sítě DistroKid (ta se
+    // řeší samostatně přes Impact – viz komentář u impact-site-verification
+    // v BaseLayout.astro). affiliateType proto zůstává 'referral', ne
+    // 'affiliate', ať se ty dvě věci nepletou.
+    affiliateType: 'referral',
+    affiliateStatus: 'active',
+    affiliateUrl: 'https://distrokid.com/vip/seven/3232386',
     officialUrl: 'https://distrokid.com/',
     recommendedFor: ['ai-hudba-tvorba-a-distribuce'],
     priority: 1,
