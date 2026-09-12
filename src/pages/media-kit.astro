@@ -1,0 +1,216 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { ui } from '../i18n/cs';
+import { getCategories } from '../lib/content';
+import { SITE_EMAIL } from '../lib/seo';
+
+const categories = await getCategories();
+
+const projectPoints = [
+  'Praktické, srozumitelné vzdělávání – ne teorie navíc.',
+  'Beginner-friendly obsah, kterému rozumí i úplný začátečník.',
+  'Realistická očekávání – žádné sliby rychlého zbohatnutí.',
+  'Transparentní doporučování nástrojů, vždy jasně označené.',
+  'Nástroje doporučujeme jen tam, kde jsou pro daný obsah skutečně relevantní.',
+];
+
+const audiencePoints = [
+  'České publikum.',
+  'Začátečníci v online vydělávání.',
+  'Freelanceři a lidé, kteří s freelancingem začínají.',
+  'Tvůrci obsahu (content creators).',
+  'Lidé zajímající se o AI nástroje.',
+  'Lidé hledající novou možnost online práce nebo podnikání.',
+  'Začínající online podnikatelé.',
+];
+
+const contentTypes = [
+  {
+    title: 'Praktické step-by-step návody',
+    text: 'Přes 30 podrobně zpracovaných možností vydělávání – co přesně děláš, kdo za to platí, jak začít od nuly a co reálně stojí.',
+  },
+  {
+    title: 'Academy lekce',
+    text: 'Strukturované lekce nad rámec jednotlivých možností – např. jak si vybrat první směr, jak sestavit portfolio, jak napsat nabídku klientovi nebo základy daní a živnosti.',
+  },
+  {
+    title: 'Nástroje v reálném kontextu použití',
+    text: 'Konkrétní AI a SaaS nástroje ukazujeme přímo v návodech, ve kterých dávají smysl – ne jako izolovaný seznam recenzí.',
+  },
+  {
+    title: 'Scam Alert',
+    text: 'Vzdělávací sekce o tom, jak fungují běžné online podvody, aby je čtenáři uměli rozpoznat.',
+  },
+];
+
+const collaborationInterests = [
+  'Affiliate partnerships',
+  'Content partnerships',
+  'Relevantní SaaS a AI nástroje',
+  'Creator tools',
+  'Marketing tools',
+  'E-commerce tools',
+  'Software pro online podnikání',
+  'Product access pro testování nástrojů',
+  'Vzdělávací obsah o relevantních produktech',
+];
+
+const whyUsPoints = [
+  'Zaměření na český trh.',
+  'Praktický, evergreen obsah – ne jednorázové kampaně.',
+  'Nástroje zasazujeme do konkrétních návodů a reálných situací, ne do obecných seznamů.',
+  'Obsah napříč AI, SaaS, freelancingem, tvorbou obsahu a online podnikáním.',
+  'Transparentní přístup k affiliate doporučením.',
+];
+---
+
+<BaseLayout
+  title="Media Kit"
+  description="Media kit českého vzdělávacího projektu Nauč se vydělávat online. Informace pro affiliate partnery, SaaS firmy a další potenciální partnery."
+>
+  <article class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
+    <!-- 1. Hero -->
+    <section class="text-center">
+      <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-ink">
+        <span class="font-display text-3xl font-bold text-accent">N</span>
+      </div>
+      <p class="mt-6 inline-flex items-center gap-2 rounded-full bg-accent px-4 py-1.5 font-display text-sm font-semibold text-accent-ink">
+        Media Kit
+      </p>
+      <h1 class="mt-5 font-display text-4xl font-bold leading-tight tracking-tight sm:text-5xl">
+        {ui.siteName}
+      </h1>
+      <p class="mx-auto mt-4 max-w-xl text-lg text-muted">
+        Český vzdělávací projekt o moderních možnostech vydělávání online.
+      </p>
+      <p class="mx-auto mt-3 max-w-xl text-sm text-muted">
+        Vytváříme praktické návody a vzdělávací obsah zaměřený na moderní online nástroje,
+        služby a způsoby práce a podnikání – od AI nástrojů přes freelancing až po online
+        podnikání.
+      </p>
+    </section>
+
+    <!-- 2. O projektu -->
+    <section class="mt-16 border-t border-border pt-12">
+      <h2 class="font-display text-2xl font-bold">O projektu</h2>
+      <p class="mt-3 font-display font-semibold text-accent-dark">„{ui.tagline}“</p>
+      <p class="mt-4 max-w-2xl text-muted">
+        {ui.siteName} je praktický přehled reálných možností, jak si přivydělat nebo vybudovat
+        příjem online – s jasně popsanými náklady, riziky a realistickým potenciálem, bez
+        marketingového balastu.
+      </p>
+      <ul class="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+        {projectPoints.map((point) => (
+          <li class="flex items-start gap-2 text-muted">
+            <span class="mt-0.5 text-accent-dark" aria-hidden="true">✓</span>
+            {point}
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- 3. Témata, kterým se věnujeme -->
+    <section class="mt-16 border-t border-border pt-12">
+      <h2 class="font-display text-2xl font-bold">Témata, kterým se věnujeme</h2>
+      <p class="mt-3 max-w-2xl text-muted">
+        Obsah je rozdělený do {categories.length} hlavních kategorií:
+      </p>
+      <div class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
+        {categories.map((category) => (
+          <div class="rounded-xl border border-border bg-card p-4 text-center">
+            <p class="text-2xl" aria-hidden="true">{category.data.emoji}</p>
+            <p class="mt-2 font-display text-sm font-semibold">{category.data.title}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- 4. Naše publikum -->
+    <section class="mt-16 border-t border-border pt-12">
+      <h2 class="font-display text-2xl font-bold">Naše publikum</h2>
+      <p class="mt-3 max-w-2xl text-muted">
+        Jsme nový a rostoucí český projekt. Místo vymyšlených čísel návštěvnosti popisujeme
+        typického čtenáře, pro kterého obsah vytváříme:
+      </p>
+      <ul class="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+        {audiencePoints.map((point) => (
+          <li class="flex items-start gap-2 text-muted">
+            <span class="mt-0.5 text-accent-dark" aria-hidden="true">✓</span>
+            {point}
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- 5. Jaký obsah tvoříme -->
+    <section class="mt-16 border-t border-border pt-12">
+      <h2 class="font-display text-2xl font-bold">Jaký obsah tvoříme</h2>
+      <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+        {contentTypes.map((item) => (
+          <div class="rounded-2xl border border-border bg-card p-5">
+            <p class="font-display font-semibold">{item.title}</p>
+            <p class="mt-2 text-sm text-muted">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- 6. Možnosti spolupráce -->
+    <section class="mt-16 border-t border-border pt-12">
+      <h2 class="font-display text-2xl font-bold">Možnosti spolupráce</h2>
+      <p class="mt-3 max-w-2xl text-muted">Máme zájem zejména o:</p>
+      <ul class="mt-5 flex flex-wrap gap-2">
+        {collaborationInterests.map((item) => (
+          <li class="rounded-full border border-border bg-card px-3.5 py-1.5 text-sm text-ink">
+            {item}
+          </li>
+        ))}
+      </ul>
+      <p class="mt-6 max-w-2xl text-sm text-muted">
+        Spolupráce nebo přístup k produktu automaticky neznamená pozitivní doporučení –
+        nástroje doporučujeme jen tehdy, když jsou skutečně relevantní pro naše publikum a
+        pro konkrétní obsah, do kterého by měly zapadat.
+      </p>
+    </section>
+
+    <!-- 7. Affiliate transparentnost -->
+    <section class="mt-16 border-t border-border pt-12">
+      <h2 class="font-display text-2xl font-bold">Affiliate transparentnost</h2>
+      <p class="mt-3 max-w-2xl text-muted">
+        Některé odkazy na webu jsou partnerské (affiliate) odkazy – ne všechny. Každý takový
+        odkaz je v textu jasně označený. Podrobnosti najdeš na stránce{' '}
+        <a href="/pravni/affiliate-disclosure" class="font-medium text-accent-dark hover:underline">
+          {ui.footer.affiliateDisclosure}
+        </a>.
+      </p>
+    </section>
+
+    <!-- 8. Proč spolupracovat s námi -->
+    <section class="mt-16 border-t border-border pt-12">
+      <h2 class="font-display text-2xl font-bold">Proč spolupracovat s námi</h2>
+      <ul class="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+        {whyUsPoints.map((point) => (
+          <li class="flex items-start gap-2 text-muted">
+            <span class="mt-0.5 text-accent-dark" aria-hidden="true">✓</span>
+            {point}
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- 9. Kontakt -->
+    <section class="mt-16 rounded-2xl border border-border bg-card p-8 text-center sm:p-10">
+      <h2 class="font-display text-2xl font-bold sm:text-3xl">
+        Máte nástroj nebo službu, která dává smysl našemu publiku?
+      </h2>
+      <p class="mt-2 text-muted">Ozvěte se.</p>
+      <a
+        href={`mailto:${SITE_EMAIL}`}
+        class="mt-6 inline-flex rounded-full bg-ink px-6 py-3.5 font-display text-base font-semibold text-white transition hover:bg-accent-dark hover:text-accent-ink"
+      >
+        Kontaktovat nás
+      </a>
+      <p class="mt-4 text-sm text-muted">{SITE_EMAIL}</p>
+    </section>
+  </article>
+</BaseLayout>
