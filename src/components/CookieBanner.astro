@@ -1,0 +1,85 @@
+---
+// Cookie lišta napojená na Google Consent Mode v2. Výchozí "denied" stav
+// nastavuje inline skript v BaseLayout.astro ještě před GTM; tady jen
+// sbíráme volbu návštěvníka a posíláme `gtag('consent', 'update', …)`.
+// Logika komponenty (Alpine.data('cookieConsent')) je v scripts/alpine.ts.
+// Lištu jde znovu otevřít odkazem s atributem data-cookie-settings (patička).
+---
+
+<div
+  x-data="cookieConsent"
+  x-cloak
+  x-show="open"
+  x-transition.opacity
+  class="fixed inset-x-0 bottom-0 z-50 p-4 sm:p-6"
+  role="dialog"
+  aria-live="polite"
+  aria-label="Nastavení cookies"
+>
+  <div class="mx-auto max-w-3xl rounded-2xl border border-border bg-card p-5 shadow-2xl sm:p-6">
+    <p class="font-display text-lg font-bold text-ink">🍪 Používáme cookies</p>
+    <p class="mt-2 text-sm text-muted">
+      Nezbytné cookies potřebujeme, aby web fungoval. Se tvým souhlasem použijeme i analytické
+      cookies (Google Analytics), abychom věděli, co čteš a co vylepšit, a marketingové cookies.
+      Souhlas můžeš kdykoliv změnit v patičce přes „Nastavení cookies“. Více v
+      <a href="/pravni/cookies" class="font-medium text-ink underline hover:text-accent-dark">zásadách cookies</a>.
+    </p>
+
+    <div x-show="details" class="mt-4 space-y-3 border-t border-border pt-4">
+      <label class="flex items-start gap-3 text-sm">
+        <input type="checkbox" checked disabled class="mt-0.5 h-4 w-4 accent-ink" />
+        <span>
+          <strong class="text-ink">Nezbytné</strong>
+          <span class="block text-muted">Základní fungování webu a uložení tvé volby. Nelze vypnout.</span>
+        </span>
+      </label>
+      <label class="flex cursor-pointer items-start gap-3 text-sm">
+        <input type="checkbox" x-model="analytics" class="mt-0.5 h-4 w-4 accent-ink" />
+        <span>
+          <strong class="text-ink">Analytické</strong>
+          <span class="block text-muted">Anonymní statistiky návštěvnosti přes Google Analytics.</span>
+        </span>
+      </label>
+      <label class="flex cursor-pointer items-start gap-3 text-sm">
+        <input type="checkbox" x-model="marketing" class="mt-0.5 h-4 w-4 accent-ink" />
+        <span>
+          <strong class="text-ink">Marketingové</strong>
+          <span class="block text-muted">Měření a personalizace reklam (např. Google Ads).</span>
+        </span>
+      </label>
+    </div>
+
+    <div class="mt-5 flex flex-col-reverse gap-2 sm:flex-row sm:items-center sm:justify-end">
+      <button
+        type="button"
+        x-show="!details"
+        @click="details = true"
+        class="rounded-full px-4 py-2 text-sm font-semibold text-muted transition hover:text-ink"
+      >
+        Nastavení
+      </button>
+      <button
+        type="button"
+        x-show="details"
+        @click="save(analytics, marketing)"
+        class="rounded-full border border-border px-4 py-2 text-sm font-semibold text-ink transition hover:border-ink"
+      >
+        Uložit výběr
+      </button>
+      <button
+        type="button"
+        @click="save(false, false)"
+        class="rounded-full border border-border px-4 py-2 text-sm font-semibold text-ink transition hover:border-ink"
+      >
+        Odmítnout vše
+      </button>
+      <button
+        type="button"
+        @click="save(true, true)"
+        class="rounded-full bg-ink px-5 py-2 text-sm font-semibold text-white transition hover:bg-accent-dark hover:text-accent-ink"
+      >
+        Přijmout vše
+      </button>
+    </div>
+  </div>
+</div>

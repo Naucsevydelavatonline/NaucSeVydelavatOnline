@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ui } from '../../i18n/cs';
+import { SITE_EMAIL } from '../../lib/seo';
+
+const lastUpdated = '25. listopadu 2026';
+
+const cookies = [
+  {
+    name: 'cookie-consent',
+    provider: 'Tento web (localStorage)',
+    purpose: 'Uloží tvou volbu v cookie liště, ať se tě neptáme pořád dokola.',
+    type: 'Nezbytné',
+    duration: 'Do smazání v prohlížeči',
+  },
+  {
+    name: '_ga',
+    provider: 'Google Analytics',
+    purpose: 'Rozlišení jednotlivých návštěvníků pro anonymní statistiky návštěvnosti.',
+    type: 'Analytické',
+    duration: '2 roky',
+  },
+  {
+    name: '_ga_*',
+    provider: 'Google Analytics',
+    purpose: 'Uchování stavu relace (session) pro statistiky návštěvnosti.',
+    type: 'Analytické',
+    duration: '2 roky',
+  },
+];
+---
+
+<BaseLayout
+  title={ui.footer.cookies}
+  description="Zásady používání cookies na webu Nauč se vydělávat online – jaké cookies používáme, k čemu slouží a jak můžeš svůj souhlas kdykoliv změnit."
+>
+  <article class="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
+    <h1 class="font-display text-4xl font-bold sm:text-5xl">{ui.footer.cookies}</h1>
+    <p class="mt-3 text-muted">Naposledy aktualizováno: {lastUpdated}</p>
+
+    <div class="mt-10 space-y-10 text-muted">
+      <section>
+        <h2 class="font-display text-xl font-bold text-ink">1. Co jsou cookies</h2>
+        <p class="mt-3">
+          Cookies jsou malé textové soubory, které si web ukládá do tvého prohlížeče. Podobně
+          funguje i úložiště prohlížeče (localStorage). Díky nim si web pamatuje například tvé
+          nastavení nebo může měřit návštěvnost.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-xl font-bold text-ink">2. Jaké cookies používáme</h2>
+        <ul class="mt-3 space-y-3">
+          <li>
+            <strong class="text-ink">Nezbytné</strong>: potřebujeme je pro základní fungování
+            webu a uložení tvé volby v cookie liště. Nevyžadují souhlas a nejdou vypnout.
+          </li>
+          <li>
+            <strong class="text-ink">Analytické</strong>: přes Google Analytics (načítané
+            pomocí Google Tag Manageru) měříme, které stránky se čtou a odkud návštěvníci
+            přicházejí. Pomáhá nám to web vylepšovat. Ukládají se <strong class="text-ink">jen
+            s tvým souhlasem</strong>.
+          </li>
+          <li>
+            <strong class="text-ink">Marketingové</strong>: slouží k měření a personalizaci
+            reklam (např. Google Ads). Ukládají se <strong class="text-ink">jen s tvým
+            souhlasem</strong>. Zatím je aktivně nepoužíváme, ale souhlas s nimi si
+            můžeš nastavit předem.
+          </li>
+        </ul>
+        <p class="mt-3">
+          Dokud nesouhlasíš, Google Analytics běží v omezeném režimu (Google Consent Mode):
+          neukládá žádné analytické cookies a neposílá identifikátory, podle kterých by tě šlo
+          rozpoznat.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-xl font-bold text-ink">3. Přehled cookies</h2>
+        <div class="mt-4 overflow-x-auto rounded-xl border border-border">
+          <table class="w-full min-w-[560px] text-left text-sm">
+            <thead class="bg-card text-ink">
+              <tr>
+                <th class="px-4 py-3 font-semibold">Název</th>
+                <th class="px-4 py-3 font-semibold">Poskytovatel</th>
+                <th class="px-4 py-3 font-semibold">Účel</th>
+                <th class="px-4 py-3 font-semibold">Typ</th>
+                <th class="px-4 py-3 font-semibold">Platnost</th>
+              </tr>
+            </thead>
+            <tbody>
+              {cookies.map((cookie) => (
+                <tr class="border-t border-border">
+                  <td class="px-4 py-3 font-mono text-xs text-ink">{cookie.name}</td>
+                  <td class="px-4 py-3">{cookie.provider}</td>
+                  <td class="px-4 py-3">{cookie.purpose}</td>
+                  <td class="px-4 py-3">{cookie.type}</td>
+                  <td class="px-4 py-3">{cookie.duration}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-3">
+          Partnerské (affiliate) odkazy vedou na weby třetích stran. Ty po prokliku mohou
+          ukládat vlastní cookies podle svých zásad, viz{' '}
+          <a href="/pravni/affiliate-disclosure" class="font-medium text-accent-dark hover:underline">
+            {ui.footer.affiliateDisclosure}
+          </a>.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-xl font-bold text-ink">4. Jak změnit nebo odvolat souhlas</h2>
+        <p class="mt-3">
+          Svou volbu můžeš kdykoliv změnit tlačítkem níže nebo odkazem „{ui.footer.cookieSettings}“
+          v patičce webu. Cookies můžeš také smazat nebo zablokovat přímo v nastavení svého
+          prohlížeče.
+        </p>
+        <button
+          type="button"
+          data-cookie-settings
+          class="mt-4 rounded-full bg-ink px-5 py-2 text-sm font-semibold text-white transition hover:bg-accent-dark hover:text-accent-ink"
+        >
+          {ui.footer.cookieSettings}
+        </button>
+      </section>
+
+      <section>
+        <h2 class="font-display text-xl font-bold text-ink">5. Kontakt</h2>
+        <p class="mt-3">
+          Máš dotaz k cookies nebo ke zpracování dat? Napiš na{' '}
+          <a href={`mailto:${SITE_EMAIL}`} class="font-medium text-accent-dark hover:underline">{SITE_EMAIL}</a>.
+        </p>
+      </section>
+    </div>
+  </article>
+</BaseLayout>

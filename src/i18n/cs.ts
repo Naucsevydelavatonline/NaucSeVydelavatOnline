@@ -190,6 +190,8 @@ export const ui = {
     legal: 'Právní',
     affiliateDisclosure: 'Affiliate odkazy',
     termsOfUse: 'Podmínky používání',
+    cookies: 'Zásady cookies',
+    cookieSettings: 'Nastavení cookies',
     rights: 'Všechna práva vyhrazena.',
     contact: 'Kontakt:',
   },
